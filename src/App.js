@@ -1,8 +1,13 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home.jsx"
 
 export default function App() {
   return (
-    <h1>Uniandes Dashboard</h1>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" />
+    </Routes>
   );
 }
 
