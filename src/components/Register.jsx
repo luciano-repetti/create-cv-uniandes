@@ -37,8 +37,8 @@ export default function Register() {
         name=""
         id=""
       />
-      <select value={"vacio"} name="Ultimo programa de egreso" id="">
-        <option value={"123"} disabled selected>
+      <select  name="Ultimo programa de egreso" defaultValue="" id="">
+        <option value={""} disabled>
           Ultimo programa de egreso
         </option>
         <option value="pe1">Programa1</option>
@@ -51,7 +51,7 @@ export default function Register() {
         name={"fechaNacimiento"}
         value={birthdate}
         onChange={handleChange}
-        id=""
+        id="fechaNacimiento"
       />
       <label>
         <input type="radio" value={"masculino"} name="sexo" id="" />
