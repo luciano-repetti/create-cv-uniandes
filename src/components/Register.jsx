@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Select from "./Select";
 
 export default function Register() {
   const [birthdate, setBirthdate] = useState("");
@@ -23,61 +24,118 @@ export default function Register() {
   }
 
   return (
-    <article>
-      <input type="text" placeholder="Ingrese su nombre/s" name="" id="name" />
-      <input
-        type="text"
-        placeholder="Ingrese su apellido/s"
-        name=""
-        id="lastname"
-      />
-      <input
-        type="number"
-        placeholder="Ingrese su código uniandes"
-        name=""
-        id=""
-      />
-      <select  name="Ultimo programa de egreso" defaultValue="" id="">
-        <option value={""} disabled>
-          Ultimo programa de egreso
-        </option>
-        <option value="pe1">Programa1</option>
-        <option value="pe2">Programa2</option>
-        <option value="pe3">Programa3</option>
-      </select>
-      <input
-        type="text"
-        placeholder="DD/MM/AAAA"
-        name={"fechaNacimiento"}
-        value={birthdate}
-        onChange={handleChange}
-        id="fechaNacimiento"
-      />
-      <label>
-        <input type="radio" value={"masculino"} name="sexo" id="" />
-        masculino
-      </label>
-      <label>
-        <input type="radio" value={"femenino"} name="sexo" id="" />
-        femenino
-      </label>
-      <label>
-        <input type="radio" value={"otro"} name="sexo" id="" />
-        otro
-      </label>
-      <input type="email" placeholder="Ingrese su email" name="" id="" />
-      <input
-        type="password"
-        placeholder="ingrese su contraseña"
-        name=""
-        id="password"
-      />
-      <input
-        type="password"
-        placeholder="ingrese nuevamente su contraseña"
-        name=""
-        id="confirmPassword"
-      />
+
+    <article className="formCredentials">
+      <h2>Bienvenido</h2>
+      <h3>¡Encuentra tu futuro ahora, pasa al siguiente nivel con nuestra herramienta!</h3>
+      <form className="registerForm">
+        <fieldset>
+          <label htmlFor="name">
+            Nombres
+            <input
+              type="text"
+              placeholder="Ingrese su nombre/s"
+              name=""
+              id="name"
+            />
+          </label>
+
+          <label htmlFor="lastName">
+            Apelidos
+            <input
+              type="text"
+              placeholder="Ingrese su apellido/s"
+              name=""
+              id="lastName"
+            />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <label htmlFor="identifier">
+            Identificación
+            <Select options={["Cédula de identificación", "Pasaporte", "Código uniandes"]} />
+          </label>
+
+          <label htmlFor="email">
+            Correo institucional
+            <input
+              type="email"
+              placeholder="example@uniandes.edu.co"
+              name=""
+              id="email"
+            />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <label htmlFor="upe">
+            Último programa de egreso
+            <Select options={["Opción 1", "Opción 2", "Opción 3"]} />
+          </label>
+
+          <label htmlFor="emailStaff">
+            Correo personal
+            <input
+              type="email"
+              placeholder="example@outlook.com"
+              name=""
+              id="emailStaff"
+            />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <label htmlFor="birthdate">
+            Fecha de nacimiento
+            <input
+              type="text"
+              placeholder="DD/MM/AAAA"
+              name="fechaNacimiento"
+              value={birthdate}
+              onChange={handleChange}
+              id="birthdate"
+            />
+          </label>
+
+          <label htmlFor="gender">
+            Género
+            <Select options={["Femenino", "Masculino", "Otro"]} />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <label htmlFor="password">
+            Contraseña
+            <input
+              type="password"
+              placeholder="ingrese su contraseña"
+              name=""
+              id="password"
+            />
+          </label>
+
+          <label htmlFor="confirmPassword">
+            Confirmar contraseña
+            <input
+              type="password"
+              placeholder="ingrese nuevamente su contraseña"
+              name=""
+              id="confirmPassword"
+            />
+          </label>
+        </fieldset>
+
+        <label htmlFor="tcp" className="labelCheckbox">
+          <input type="checkbox" name="" id="tcp" />
+          Acepto Términos y condiciones y Protección de datos
+        </label>
+
+        <button type="submit">Ingresar</button>
+
+        <a href="">¿Ya tienes una cuenta? Inicia sesión</a>
+      </form>
     </article>
+
   );
 }

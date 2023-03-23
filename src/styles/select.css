@@ -1,0 +1,57 @@
+.select{
+    position: relative;
+    width: 100%;
+}
+
+.select .inputSelect{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border-radius: .5em;
+    border: 1px solid #dddddd;
+    background-color: #fff;
+    padding: 0 1em;
+    user-select: none;
+}
+
+.select .inputSelect .arrow{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 1em;
+}
+
+.select .selectExpand{
+    width: 100%;
+    list-style: none;
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    border: 1px solid #dddddd;
+    background-color: #fff;
+    margin-top: .5em;
+    visibility: hidden;
+    border-radius: .5em;
+    overflow: scroll;
+    overflow-x: hidden;
+    min-height: 0;
+    height: 0;
+    transition: min-height .3s, visibility .2s;
+}
+
+.select .selectExpand.show {
+    visibility: visible;
+}
+
+.select .selectExpand li{
+    padding: 0.5em .5em;
+}
+
+.select .selectExpand li:hover{
+    background-color: #dddddd;
+}
+
+.select .selectExpand:focus{
+    border: 1px solid #3573f8;
+}
