@@ -52,6 +52,11 @@
     background-color: #dddddd;
 }
 
-.select .selectExpand:focus{
+.select .inputSelect:focus-visible{
+    outline: none;
+    border: 1px solid #3573f8;
+}
+
+.select .inputSelect.show{
     border: 1px solid #3573f8;
 }

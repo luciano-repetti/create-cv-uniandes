@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "../styles/form.css"
 import Select from "./Select";
 
 export default function Register() {
   const [birthdate, setBirthdate] = useState("");
+  const [selects, setSelects] = useState([])
+  const [formData, setFormData] = useState([])
 
   function handleChange(event) {
     let value = event.target.value;
@@ -23,18 +26,55 @@ export default function Register() {
     setBirthdate(value);
   }
 
+  function handleSelectChange(value, id) {
+    // const dataSelect = {}
+
+    setSelects(prevState => ([
+      ...prevState,
+      {[id]: value}
+    ]))
+
+    // dataSelect[id] = value
+    // setSelects(dataSelect)
+  }
+
+  function handleSubmit(event){
+    event.preventDefault()
+
+    const [identifier, upe, gender] = selects
+
+    setFormData([
+      {[event.target[1].id]: event.target[1].value.toLowerCase().trim()},
+      {[event.target[2].id]: event.target[2].value.toLowerCase().trim()},
+      {[identifier["identifier"]]: event.target[4].value.toLowerCase().trim()},
+      {[event.target[6].id]: event.target[6].value.toLowerCase().trim()},
+      {[event.target[8].id]: event.target[8].value.toLowerCase().trim()},
+      {[event.target[10].id]: event.target[10].value.toLowerCase().trim()},
+      {[event.target[11].id]: event.target[11].value.toLowerCase().trim()},
+      upe,
+      gender
+    ])    
+  }
+
+  useEffect(() =>{
+    if(formData.length != 0){
+      console.log(formData);
+    }
+  }, [formData])
+
   return (
 
     <article className="formCredentials">
       <h2>Bienvenido</h2>
       <h3>¡Encuentra tu futuro ahora, pasa al siguiente nivel con nuestra herramienta!</h3>
-      <form className="registerForm">
+      <form className="registerForm" onSubmit={handleSubmit}>
         <fieldset>
           <label htmlFor="name">
             Nombres
             <input
+              tabIndex={0}
               type="text"
-              placeholder="Ingrese su nombre/s"
+              placeholder="Tus nombres"
               name=""
               id="name"
             />
@@ -43,8 +83,9 @@ export default function Register() {
           <label htmlFor="lastName">
             Apelidos
             <input
+              tabIndex={0}
               type="text"
-              placeholder="Ingrese su apellido/s"
+              placeholder="Tus apellidos"
               name=""
               id="lastName"
             />
@@ -54,16 +95,17 @@ export default function Register() {
         <fieldset>
           <label htmlFor="identifier">
             Identificación
-            <Select options={["Cédula de identificación", "Pasaporte", "Código uniandes"]} />
+            <Select options={["Cédula de identificación", "Pasaporte", "Código uniandes"]} onSelectChange={handleSelectChange} _id={"identifier"} />
           </label>
 
           <label htmlFor="email">
-            Correo institucional
+            Número de identificación
             <input
-              type="email"
-              placeholder="example@uniandes.edu.co"
+              tabIndex={0}
+              type="text"
+              placeholder="Escribir número"
               name=""
-              id="email"
+              id="numberIdentification"
             />
           </label>
         </fieldset>
@@ -71,16 +113,17 @@ export default function Register() {
         <fieldset>
           <label htmlFor="upe">
             Último programa de egreso
-            <Select options={["Opción 1", "Opción 2", "Opción 3"]} />
+            <Select options={["Opción 1", "Opción 2", "Opción 3"]} onSelectChange={handleSelectChange} _id={"upe"} />
           </label>
 
-          <label htmlFor="emailStaff">
-            Correo personal
+          <label htmlFor="email">
+            Correo
             <input
+              tabIndex={0}
               type="email"
-              placeholder="example@outlook.com"
+              placeholder="example@uniandes.com"
               name=""
-              id="emailStaff"
+              id="email"
             />
           </label>
         </fieldset>
@@ -89,6 +132,7 @@ export default function Register() {
           <label htmlFor="birthdate">
             Fecha de nacimiento
             <input
+              tabIndex={0}
               type="text"
               placeholder="DD/MM/AAAA"
               name="fechaNacimiento"
@@ -100,7 +144,7 @@ export default function Register() {
 
           <label htmlFor="gender">
             Género
-            <Select options={["Femenino", "Masculino", "Otro"]} />
+            <Select options={["Femenino", "Masculino", "Otro"]} onSelectChange={handleSelectChange} _id={"gender"} />
           </label>
         </fieldset>
 
@@ -108,6 +152,7 @@ export default function Register() {
           <label htmlFor="password">
             Contraseña
             <input
+              tabIndex={0}
               type="password"
               placeholder="ingrese su contraseña"
               name=""
@@ -118,6 +163,7 @@ export default function Register() {
           <label htmlFor="confirmPassword">
             Confirmar contraseña
             <input
+              tabIndex={0}
               type="password"
               placeholder="ingrese nuevamente su contraseña"
               name=""
@@ -127,13 +173,13 @@ export default function Register() {
         </fieldset>
 
         <label htmlFor="tcp" className="labelCheckbox">
-          <input type="checkbox" name="" id="tcp" />
+          <input tabIndex={0} type="checkbox" name="" id="tcp" />
           Acepto Términos y condiciones y Protección de datos
         </label>
 
         <button type="submit">Ingresar</button>
 
-        <a href="">¿Ya tienes una cuenta? Inicia sesión</a>
+        <a href="">¿Ya tienes una cuenta? <label className="bold">Inicia sesión</label></a>
       </form>
     </article>
 

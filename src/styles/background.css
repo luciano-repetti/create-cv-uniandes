@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containerBackground{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.background{
+    display: inline-block;
+    width: 100%;
+    min-height: 68vh;
+}
+
+.background.b-grey{
+    background-color: #b9b9b9;
+}
+
+.background.b-white{
+    background-color: #fff;
+    min-height: 32vh;
+}

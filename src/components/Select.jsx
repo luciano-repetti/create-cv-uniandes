@@ -14,16 +14,16 @@ export default function Select(props){
     const handleSelectValue = (e) => {
         setSelectValue(e.target.textContent);
         setSelectExpand(!selectExpand);
-        props.onSelectChange(e.target.textContent);
+        props.onSelectChange(e.target.textContent, props._id)
     };
 
     let options = props.options
 
-    document.styleSheets[0].cssRules[4].style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
+    document.styleSheets[1].cssRules[4].style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
     
     return(
         <div className="select">
-            <p onClick={handleSelectExpand} className="inputSelect">{selectValue ? selectValue : "Seleccionar"} <img className="arrow" src="http://localhost:3000/arrow-down.png" alt="" /></p>
+            <p tabIndex={0} onClick={handleSelectExpand} className={selectExpand ? "inputSelect show" : "inputSelect"}>{selectValue ? selectValue : "Seleccionar"} <img className="arrow" src="http://localhost:3000/arrow-down.png" alt="" /></p>
             <ul className={selectExpand ? "selectExpand show" : "selectExpand"}>
                 {
                     options ? options.map((option, index) =>{
