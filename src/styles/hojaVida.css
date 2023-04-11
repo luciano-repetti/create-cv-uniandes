@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+}
+
+.containerHoja{
+    height: calc(100vh - 100px);
+    padding: 0 2em;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerCreate{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.createCv{
+    width: 165px;
+}
+
+
+.hojasDeVida{
+    padding-top: 1em;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cvs{
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    height: 100%;
+}
+
+.iconoCv{
+    width: 186px;
+    height: 186px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d9d9d9;
+}

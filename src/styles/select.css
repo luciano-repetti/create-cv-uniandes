@@ -60,3 +60,7 @@
 .select .inputSelect.show{
     border: 1px solid #3573f8;
 }
+
+.select .inputSelect.error{
+    border: 1px solid #df0000;
+}

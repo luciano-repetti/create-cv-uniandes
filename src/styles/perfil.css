@@ -1,0 +1,52 @@
+.containerPerfil{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5em;
+    padding: 3em 6em;
+}
+
+.containerPerfil .containerArticles{
+    display: flex;
+    width: 100%;
+    gap: 1em;
+}
+
+.containerPerfil .containerArticles .articlePefil{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+
+.formPerfil{
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f3f3;
+    padding: 31px 51px;
+    gap: 1.5em;
+}
+
+.formPerfil .photoLoad{
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+}
+
+.formPerfil .buttonLoad{
+    width: 80%;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.formPerfil .loadPhoto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.downloadCv{
+    width: 200px;
+    height: 50px;
+}
+

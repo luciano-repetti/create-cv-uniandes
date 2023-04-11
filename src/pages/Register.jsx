@@ -1,15 +1,15 @@
 import React from "react";
-import Login from "../components/Login";
+import Register from "../components/Register";
 import Background from "../components/Background";
-import ScrollToTop from "../components/ScrollToTop"
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function Home() {
-  ScrollToTop()
+  ScrollToTop();
 
   return (
     <>
       <Background></Background>
-      <Login />
+      <Register />
     </>
   );
 }

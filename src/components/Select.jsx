@@ -18,13 +18,15 @@ export default function Select(props){
     };
 
     let options = props.options
+    let style = document.styleSheets[3].cssRules[4].style
 
-    document.styleSheets[1].cssRules[4].style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
+    // document.styleSheets[3].cssRules[4].style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
+    style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
     
     return(
         <div className="select">
-            <p tabIndex={0} onClick={handleSelectExpand} className={selectExpand ? "inputSelect show" : "inputSelect"}>{selectValue ? selectValue : "Seleccionar"} <img className="arrow" src="http://localhost:3000/arrow-down.png" alt="" /></p>
-            <ul className={selectExpand ? "selectExpand show" : "selectExpand"}>
+            <p tabIndex={0} onClick={handleSelectExpand} className={selectExpand ? "inputSelect show" : `inputSelect ${props.error ? "error" : ""}`}>{selectValue ? selectValue : "Seleccionar"} <img className="arrow" src="http://localhost:3000/arrow-down.png" alt="" /></p>
+            <ul style={{zIndex: props.indexZ}} className={selectExpand ? "selectExpand show" : "selectExpand"}>
                 {
                     options ? options.map((option, index) =>{
                         return <li onClick={handleSelectValue} key={index}>{option}</li>
