@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/perfil.css"
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
@@ -12,12 +12,6 @@ export default function Perfil() {
   const user = useSelector(store => store.user)
   const [birthdate, setBirthdate] = useState("")
   const [selects, setSelects] = useState({gender: "", identifier: "", upe: ""})
-
-  useEffect(() =>{
-    if(Object.keys(user.user).length == 0){
-      navigate("/")
-    }
-  }, [user])
 
   function handleChange(event) {
     let value = event.target.value;

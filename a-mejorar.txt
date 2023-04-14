@@ -1,0 +1,4 @@
+-Agregar toast para mensajes del back.
+-Agregar calendario en los input de fechas.
+-Agregar un Lazy() y un suspense.
+-Hacer diferentes el header para que no quede vacio.

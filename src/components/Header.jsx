@@ -23,13 +23,8 @@ export default function Header(){
     useEffect(() =>{
         if(user && (Object.keys(user.user).length >= 0)){
           setUserData(user.user)
-          console.log(user);
         }
       }, [user])
-
-    useEffect(() => {
-        console.log(location.pathname);
-    }, [])
 
     function isCurrentPage(path){
         return location.pathname === path ? 'active' : '';
