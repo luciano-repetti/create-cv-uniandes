@@ -216,15 +216,17 @@ export default function Perfil() {
                 </label>
               </fieldset>
 
-              <button type="submit">Guardar</button>
 
             </form>
+              <button type="submit" className="savePefil">Guardar</button>
           </article>
 
           <article className="articlePefil">
             <h3>Porcentaje de información completada</h3>
-            <h4 className="greyish">14% de perfil completado</h4>
-            <button className="downloadCv" onClick={() => navigate("/hoja-de-vida")}>Descargar hoja de vida</button>
+            <article className="porcentajeCv">
+              <h4 className="greyish">14% de perfil completado</h4>
+              <button className="downloadCv" onClick={() => navigate("/hoja-de-vida")}>Descargar hoja de vida</button>
+            </article>
           </article>
         </div>
       </section>

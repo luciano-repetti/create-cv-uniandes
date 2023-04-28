@@ -8,8 +8,9 @@ export default function Home() {
 
   return (
     <>
-      <Background></Background>
-      <Login />
+      <Background>
+        <Login />
+      </Background>
     </>
   );
 }

@@ -1,21 +1,25 @@
+body{
+    background-color: #e0dfe7;
+}
+
 .containerBackground{
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #e0dfe7;
 }
 
-.background{
+.backgroundImage{
     display: inline-block;
     width: 100%;
     min-height: 60vh;
+    background-image: url(http://localhost:3000/Fondo-login.png);
+    background-position: center;
+    background-size: cover;
 }
 
-.background.b-grey{
-    background-color: #b9b9b9;
-}
-
-.background.b-white{
-    background-color: #fff;
-    min-height: 40vh;
+.backgroundGrey{
+    background-color: #e0dfe7;
+    max-height: 200px;
 }

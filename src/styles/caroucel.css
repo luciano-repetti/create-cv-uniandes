@@ -1,5 +1,6 @@
 .containerCarousel{
     padding-top: 3em;
+    padding-bottom: 2em;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -10,18 +11,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
     position: relative;
+    width: 50%;
     overflow: hidden;
 }
 
 .containerCarousel .carousel .containerSliders{
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 150px;
-    position: relative;
+    height: 590px;
 }
 
 .containerCarousel .carousel .slider{
@@ -31,14 +32,46 @@
     gap: 2em;
     transform: translateX(150%);
     position: absolute;
+    top: 50%;
 }
 
-.containerCarousel .carousel .slider label{
+.containerCarousel .carousel .slider .containerForm{
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    gap: 2rem;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #323A46;
+}
+
+.containerCarousel .carousel .slider .containerForm hr{
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    border: none;
+}
+
+.containerCarousel .carousel .slider .containerForm .photoLoad{
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+}
+
+.containerCarousel .carousel .slider .containerForm .loadPhoto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #323A46;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.containerCarousel .carousel .slider .containerForm .loadPhoto .buttonLoad{
+    height: 40px;
+    width: 120px;
 }
 
 .containerCarousel .carousel .slider.default{
-    transform: translateX(0);
+    transform: translateY(-50%) translateX(0);
 }
 
 .containerCarousel .carousel .slider.active{
@@ -52,26 +85,59 @@
 
 @keyframes slide-left {
     0% {
-        -webkit-transform: translateX(150%);
-                transform: translateX(150%);
+        -webkit-transform: translateY(-50%) translateX(150%);
+                transform: translateY(-50%) translateX(150%);
     }
     100% {
-        -webkit-transform: translateX(0%);
-                transform: translateX(0%);
+        -webkit-transform: translateY(-50%) translateX(0%);
+                transform: translateY(-50%) translateX(0%);
     }
 }
 
 @keyframes slide-left-dissable {
     0% {
-        -webkit-transform: translateX(0%);
-                transform: translateX(0%);
+        -webkit-transform: translateY(-50%) translateX(0%);
+                transform: translateY(-50%) translateX(0%);
     }
     100% {
-        -webkit-transform: translateX(-160%);
-                transform: translateX(-160%);
+        -webkit-transform: translateY(-50%) translateX(-160%);
+                transform: translateY(-50%) translateX(-160%);
     }
 }
 
-/* .containerCarousel .carousel button{
-    width: 80%;
-} */
+
+fieldset .labelSlider{
+    width: 50%;
+}
+
+fieldset .labelSlider.company{
+    width: 70%;
+}
+
+.labelDescription{
+    width: 100%;
+}
+
+.labelDescription textarea{
+    resize: none;
+    width: 100%;
+    height: 80px;
+    font-size: .9em;
+    border-radius: .5em;
+    padding: .5em 1em;
+    color: #667085;
+    font-family: 'Nunito Sans', sans-serif;
+    border: 1px solid #E0E3E8;
+    background-color: #FAFAFC;
+}
+
+.labelDescription .resumeWork{
+    height: 80px;
+    color: #667085;
+    font-size: .9em;
+}
+
+textarea:focus-visible{
+    border: 1px solid #3573f8;
+    outline: none;
+}

@@ -18,10 +18,13 @@ export default function Select(props){
     };
 
     let options = props.options
-    let style = document.styleSheets[3].cssRules[4].style
+    let style = document.styleSheets[5].cssRules[4].style
 
     // document.styleSheets[3].cssRules[4].style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
-    style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
+    // style["min-height"] = `${options.length < 4 ? 34 * options.length : 34 * 3}px`
+    // style["overflow-y"] = `${options.length < 4 ? "hidden" : "scroll"}`
+    // style["overflow-x"] = "hidden"
+    // console.log(document.styleSheets);
     
     return(
         <div className="select">

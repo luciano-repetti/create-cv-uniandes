@@ -1,12 +1,14 @@
-import React from "react";
+import React, { children } from "react";
 import "../styles/background.css"
 
-export default function Background(){
+export default function Background({children}){
 
     return(
         <section className="containerBackground">
-            <article className="background b-grey"></article>
-            <article className="background b-white"></article>
+            <article className="backgroundImage"></article>
+            <article className="backgroundGrey">
+                {children}
+            </article>
         </section>
     )
 }

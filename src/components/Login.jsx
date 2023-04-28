@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link as LinkRouter, useNavigate } from "react-router-dom";
+import { Link as LinkRouter, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import userActions from "../store/users/actions";
 
@@ -8,8 +8,11 @@ export default function Login(){
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({})
+  const [showPass, setShowPass] = useState(false)
+
   const dispatch = useDispatch()
   const {userSignIn} = userActions
+  const location =useLocation()
   const user = useSelector(store => store.user)
 
   function handleSubmit(event){
@@ -21,21 +24,26 @@ export default function Login(){
     })
   }
 
+  function handleShowPass(){
+    setShowPass(!showPass)
+  }
+
   useEffect(() => {
     if(Object.keys(formData).length !== 0){
       dispatch(userSignIn(formData))
     }
   }, [formData])
 
-  useEffect(() =>{
-    if(user && (Object.keys(user.user).length > 0)){
-      navigate('/perfil');
-    }
-  }, [user])
+  // useEffect(() =>{
+  //   if(user && (Object.keys(user.user).length > 0)){
+  //     navigate(`${location.pathname}`);
+  //     console.log(location.pathname);
+  //   }
+  // }, [user])
 
     return(
     <article className="formCredentials login">
-      <h2>Bienvenido</h2>
+      <h2>¡Bienvenido!</h2>
       <h3>¡Encuentra tu futuro ahora, pasa al siguiente nivel con nuestra herramienta!</h3>
       <form className="registerForm" onSubmit={handleSubmit}>
         
@@ -55,11 +63,12 @@ export default function Login(){
           <label className="labelLogin" htmlFor="password">
             Contraseña
             <input
-              type="password"
+              type={showPass ? "text" : "password"}
               placeholder="Contraseña"
               name=""
               id="password"
-            />
+            ></input>
+            <img onClick={() => handleShowPass()} className="showpass" src={showPass ? "http://localhost:3000/icono-ver-contraseña.png" : "http://localhost:3000/icono-no-ver-contraseña.png"} />
           </label>
       </fieldset>
       <div className="forgetPassword">
@@ -68,9 +77,9 @@ export default function Login(){
 
         <button type="submit">Ingresar</button>
 
-        <LinkRouter to={"./registro"}>¿No tienes una cuenta? <label className="bold">Registrate</label></LinkRouter>
+        <LinkRouter to={"/registro"}>¿No tienes una cuenta? <label className="bold">Registrate</label></LinkRouter>
 
-        <button type="">Iniciar sesión con Microsoft Outlook</button>
+        <button className="buttonMicrosoft" type="">Iniciar sesión con Microsoft Outlook</button>
 
       </form>
 

@@ -3,7 +3,6 @@ import "../styles/hojaVida.css"
 import CreateResume from "../components/CreateResume";
 
 export default function Perfil() {
-  // ScrollToTop();
 
   const [active, setActive] = useState(false)
 
@@ -24,9 +23,7 @@ export default function Perfil() {
                 <article className="hojasDeVida">
                     <h3>Mi hoja de vida</h3>
                     <section className="cvs">
-                        <div className="iconoCv">
-                            icono
-                        </div>
+                        <img className="iconoCv" src="http://localhost:3000/Icono-hoja-vacia.png" />
                         <p>No tienes hojas de vida creadas</p>
                     </section>
             </article>

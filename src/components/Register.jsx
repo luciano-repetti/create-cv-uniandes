@@ -100,7 +100,7 @@ export default function Register() {
   return (
 
     <article className="formCredentials">
-      <h2>Bienvenido</h2>
+      <h2>¡Bienvenido!</h2>
       <h3>¡Encuentra tu futuro ahora, pasa al siguiente nivel con nuestra herramienta!</h3>
       <form className="registerForm" onSubmit={handleSubmit}>
         <fieldset>
@@ -217,7 +217,7 @@ export default function Register() {
 
         <label htmlFor="tcp" className="labelCheckbox">
           <input tabIndex={0} type="checkbox" name="" id="tcp" />
-          Acepto Términos y condiciones y Protección de datos
+          <label htmlFor="tcp">Acepto <label  className="bold">Términos y condiciones y Protección de datos</label></label>
         </label>
 
         <button type="submit">Ingresar</button>

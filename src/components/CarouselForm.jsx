@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Slider1, Slider2} from "./Slider";
 import "../styles/caroucel.css"
 
 export default function CarouselForm() {
@@ -22,39 +23,11 @@ export default function CarouselForm() {
   return (
     <section className="containerCarousel">
       <section className="carousel">
-        <div className="containerSliders">
-          <div className={`slider ${caroucel.slider1 ? "default" : "dissable"}`}>
-            <label htmlFor="">
-              Nombre/s:
-              <input type="text" name="" id="" />
-            </label>
-            <label htmlFor="">
-              Apellido/s:
-              <input type="text" name="" id="" />
-            </label>
-          </div>
+        <div className={`containerSliders slider${contadorSlider}`}>
+          
+          <Slider1 slider={caroucel} />
 
-          <div className={`slider ${caroucel.slider2 ? "active" : "" || caroucel.slider3 ? "dissable" : ""}`}>
-            <label htmlFor="">
-              Estudios: 
-              <input type="text" name="" id="" />
-            </label>
-            <label htmlFor="">
-              Trabajos: 
-              <input type="text" name="" id="" />
-            </label>
-          </div>
-
-          <div className={`slider ${caroucel.slider3 ? "active" : ""}`}>
-            <label htmlFor="">
-              Idiomas: 
-              <input type="text" name="" id="" />
-            </label>
-            <label htmlFor="">
-              Habilidades: 
-              <input type="text" name="" id="" />
-            </label>
-          </div>
+          <Slider2 slider={caroucel} />
 
         </div>
         {
