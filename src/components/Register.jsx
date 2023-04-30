@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link as LinkRouter, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import userActions from "../store/users/actions";
-import "../styles/form.css"
+// import "../styles/form.css"
 import Select from "./Select";
 import validator from "./Validator";
 

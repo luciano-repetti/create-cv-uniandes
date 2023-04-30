@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/perfil.css"
+// import "../styles/perfil.css"
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
 import Select from "../components/Select";

@@ -13,7 +13,7 @@ export default function VerifyToken(){
             const token = localStorage.getItem("70k3n")
             dispatch(verifyToken(token))
         }
-    }, [dispatch, verifyToken]);
+    }, []);
 
     return <div>Verifying token...</div>
 }

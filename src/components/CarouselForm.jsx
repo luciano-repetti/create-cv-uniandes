@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Slider1, Slider2} from "./Slider";
-import "../styles/caroucel.css"
+// import "../styles/caroucel.css"
 
 export default function CarouselForm() {
 

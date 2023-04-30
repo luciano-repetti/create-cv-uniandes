@@ -1,5 +1,5 @@
 import React, { children } from "react";
-import "../styles/background.css"
+// import "../styles/background.css"
 
 export default function Background({children}){
 

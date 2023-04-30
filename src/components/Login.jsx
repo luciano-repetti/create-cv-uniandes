@@ -12,7 +12,7 @@ export default function Login(){
 
   const dispatch = useDispatch()
   const {userSignIn} = userActions
-  const location =useLocation()
+  const location = useLocation()
   const user = useSelector(store => store.user)
 
   function handleSubmit(event){
@@ -29,17 +29,16 @@ export default function Login(){
   }
 
   useEffect(() => {
-    if(Object.keys(formData).length !== 0){
+    if(Object.keys(formData).length !== 0){ 
       dispatch(userSignIn(formData))
     }
   }, [formData])
 
-  // useEffect(() =>{
-  //   if(user && (Object.keys(user.user).length > 0)){
-  //     navigate(`${location.pathname}`);
-  //     console.log(location.pathname);
-  //   }
-  // }, [user])
+  useEffect(() =>{
+    if(user && (Object.keys(user.user).length > 0)){
+      navigate("/perfil");
+    }
+  }, [user])
 
     return(
     <article className="formCredentials login">

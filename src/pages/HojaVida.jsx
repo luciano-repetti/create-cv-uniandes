@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/hojaVida.css"
+// import "../styles/hojaVida.css"
 import CreateResume from "../components/CreateResume";
 
 export default function Perfil() {

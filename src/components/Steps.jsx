@@ -1,4 +1,4 @@
-import "../styles/steps.css"
+// import "../styles/steps.css"
 
 export default function Steps(){
 

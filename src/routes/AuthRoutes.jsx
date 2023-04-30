@@ -3,20 +3,20 @@ import { Navigate, Outlet } from "react-router-dom"
 import { publicRoutes } from "./routes"
 import { useEffect, useState } from "react"
 
-export default function AuthRoutes(){
+export default function AuthRoutes({user}){
 
     const [userData, setUserData] = useState({})
 
-    const user = useSelector(store => store.user)
+    // const user = useSelector(store => store.user)
 
-    useEffect(() =>{
-        if(user && (Object.keys(user.user).length > 0)){
-            setUserData(user.user)
-            console.log(user);
-        }
-      }, [user])
+    // useEffect(() =>{
+    //     if(user && (Object.keys(user.user).length > 0)){
+    //         setUserData(user.user)
+    //         console.log(user);
+    //     }
+    //   }, [user])
 
-    //   console.log(user);
+      console.log(user);
 
     return(
         user.user.id ?

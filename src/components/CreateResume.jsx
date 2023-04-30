@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Steps from "./Steps";
-import "../styles/createResume.css";
+// import "../styles/createResume.css";
 import CarouselForm from "./CarouselForm";
 
 export default function CreateResume(props) {
