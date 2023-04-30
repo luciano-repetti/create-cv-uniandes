@@ -47,13 +47,13 @@ export default function Header(){
                             <Link>Descubriendo tu opinión</Link>
                         </nav>
                         <div className="userSignOut">
-                            <img className="userImg" src="http://localhost:3000/usuario_vacio.png" alt="" />
-                            <p onClick={() => setMenu(!menu)}>{userData.fullName} <img className="arrow" src="http://localhost:3000/arrow-down.png" alt="" /></p>
-                            <button onClick={changeSignOut} className={(menu ? "profile show" : "profile")}><img src="http://localhost:3000/cerrar-sesion.png" />Cerrar sesión</button>
+                            <img className="userImg" src="./usuario_vacio.png" alt="" />
+                            <p onClick={() => setMenu(!menu)}>{userData.fullName} <img className="arrow" src="./arrow-down.png" alt="" /></p>
+                            <button onClick={changeSignOut} className={(menu ? "profile show" : "profile")}><img src="./cerrar-sesion.png" />Cerrar sesión</button>
                         </div>
                     </article>
                 </>
-                :  <img className="logo" src="http://localhost:3000/Logo-U-Andes.png" alt="" />
+                :  <img className="logo" src="./Logo-U-Andes.png" alt="" />
             }
         </header>
         

@@ -67,7 +67,7 @@ export default function Login(){
               name=""
               id="password"
             ></input>
-            <img onClick={() => handleShowPass()} className="showpass" src={showPass ? "http://localhost:3000/icono-ver-contraseña.png" : "http://localhost:3000/icono-no-ver-contraseña.png"} />
+            <img onClick={() => handleShowPass()} className="showpass" src={showPass ? "./icono-ver-contraseña.png" : "./icono-no-ver-contraseña.png"} />
           </label>
       </fieldset>
       <div className="forgetPassword">

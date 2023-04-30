@@ -11,7 +11,7 @@ export function Slider1(props) {
         <fieldset>
           <img
             className="photoLoad"
-            src="http://localhost:3000/usuario_vacio.png"
+            src="./usuario_vacio.png"
             alt=""
           />
           <div className="loadPhoto">

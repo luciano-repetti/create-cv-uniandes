@@ -23,7 +23,7 @@ export default function Perfil() {
                 <article className="hojasDeVida">
                     <h3>Mi hoja de vida</h3>
                     <section className="cvs">
-                        <img className="iconoCv" src="http://localhost:3000/Icono-hoja-vacia.png" />
+                        <img className="iconoCv" src="./Icono-hoja-vacia.png" />
                         <p>No tienes hojas de vida creadas</p>
                     </section>
             </article>

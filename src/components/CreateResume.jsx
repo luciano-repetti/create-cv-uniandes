@@ -22,7 +22,7 @@ export default function CreateResume(props) {
     <section className="createResume">
         <div className="containerH2">
             <h2 className="subtitleCv" onClick={() => changeStateActive()}>
-            <img className="arrowLeft" src="http://localhost:3000/icono-volver.png" /> Crear hoja de vida
+            <img className="arrowLeft" src="./icono-volver.png" /> Crear hoja de vida
             </h2>
         </div>
         <article className="containerCreateCv">

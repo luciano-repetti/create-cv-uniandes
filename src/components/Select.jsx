@@ -31,7 +31,7 @@ export default function Select(props) {
         {selectValue ? selectValue : "Seleccionar"}{" "}
         <img
           className="arrow"
-          src="http://localhost:3000/arrow-down.png"
+          src="./arrow-down.png"
           alt=""
         />
       </p>
