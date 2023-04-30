@@ -55,7 +55,7 @@ export default function Perfil() {
             <h3>Datos básicos</h3>
             <form action="" className="formPerfil">
               <fieldset>
-                <img className="photoLoad" src="http://localhost:3000/usuario_vacio.png" alt="" />
+                <img className="photoLoad" src="./usuario_vacio.png" alt="" />
                 <div className="loadPhoto">
                   <p className="bold">Foto</p>
                   <p className="greyish">600 x 600 recomendado</p>

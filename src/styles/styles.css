@@ -562,7 +562,7 @@ button:active{
     padding-top: 2em;
     display: flex;
     flex-direction: column;
-    background-image: url(http://localhost:3000/fondo-web-andes.jpg);
+    background-image: url("../../public/fondo-web-andes.jpg");
 }
 
 .containerCreate{
