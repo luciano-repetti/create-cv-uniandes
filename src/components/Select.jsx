@@ -1,18 +1,29 @@
 import React, { useState } from "react";
-// import "../styles/select.css";
 
 export default function Select(props) {
   const [selectExpand, setSelectExpand] = useState(false);
   const [selectValue, setSelectValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
   const handleSelectExpand = () => {
     setSelectExpand(!selectExpand);
   };
 
   const handleSelectValue = (e) => {
-    setSelectValue(e.target.textContent);
+    console.log(e);
+    const selectedValue = e.target.textContent;
+    setSelectValue(selectedValue);
     setSelectExpand(!selectExpand);
-    props.onSelectChange(e.target.textContent, props._id);
+    if (selectedValue === "Otro") {
+      setInputValue("");
+    } else {
+      props.onSelectChange(selectedValue, props._id);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    props.onSelectChange(e.target.value, props._id);
   };
 
   let options = props.options;
@@ -28,12 +39,24 @@ export default function Select(props) {
             : `inputSelect ${props.error ? "error" : ""}`
         }
       >
-        {selectValue ? selectValue : "Seleccionar"}{" "}
-        <img
-          className="arrow"
-          src="./arrow-down.png"
-          alt=""
-        />
+        {selectValue ? (
+          selectValue === "Otro" ? (
+            <label className="inputOption">
+              {selectValue}:{" "}
+              <input
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </label>
+          ) : (
+            selectValue
+          )
+        ) : (
+          "Seleccionar"
+        )}{" "}
+        <img className="arrow" src="./arrow-down.png" alt="" />
       </p>
       <ul
         style={{ zIndex: props.indexZ }}

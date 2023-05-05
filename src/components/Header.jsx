@@ -44,13 +44,19 @@ export default function Header(){
                         <nav className="nav">
                             <Link to={privateRoutes.PERFIL} className={isCurrentPage("/perfil")}>Perfil</Link>
                             <Link to={privateRoutes.SHEETS_LIFE} className={isCurrentPage("/hoja-de-vida")}>Hoja de vida</Link>
-                            <Link>Descubriendo tu opinión</Link>
+                            <Link to={privateRoutes.SURVEY} className={isCurrentPage("/descubriendo-tu-opinion")}>Descubriendo tu opinión</Link>
                         </nav>
-                        <div className="userSignOut">
+                        <div className="userSignOut" onClick={() => setMenu(!menu)}>
                             <img className="userImg" src="./usuario_vacio.png" alt="" />
-                            <p onClick={() => setMenu(!menu)}>{userData.fullName} <img className="arrow" src="./arrow-down.png" alt="" /></p>
+                            <div style={{display : "flex", alignItems: "center"}}>
+                                <p>{userData.fullName}</p>
+                                <img className="arrow" src="./arrow-down.png" alt="" />
+                            </div>
                             <button onClick={changeSignOut} className={(menu ? "profile show" : "profile")}><img src="./cerrar-sesion.png" />Cerrar sesión</button>
                         </div>
+                        {/* <div className="menuBurger">
+                            <img src="./menu-icono.png" alt="" />
+                        </div> */}
                     </article>
                 </>
                 :  <img className="logo" src="./Logo-U-Andes.png" alt="" />

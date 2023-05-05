@@ -51,13 +51,14 @@ header .logoSimple{
 header .nav{
     width: max-content;
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
 }
 
 header .nav a{
     color: #000;
     text-decoration: none;
     font-size: 1.1em;
+    padding: .2rem 1.5rem;
 }
 
 header .nav a.active{
@@ -65,7 +66,6 @@ header .nav a.active{
     text-decoration: none;
     background-color: #fff;
     border-radius: 1em;
-    padding: .2rem 1.5rem;
 }
 
 header .userSignOut{
@@ -78,6 +78,7 @@ header .userSignOut{
     border-radius: 30px;
     position: relative;
     background-color: #fff;
+    cursor: pointer;
 }
 
 header .userSignOut .userImg{
@@ -98,12 +99,16 @@ header .userSignOut p{
     cursor: pointer;
 }
 
+header .menuBurger{
+    display: none;
+}
+
 .profile{
     background-color: #FFFFFF;
     color: #323A46;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    width: 80%;
+    width: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,6 +135,90 @@ header .userSignOut p{
 
 .profile.show{
     min-height: 45px;
+}
+
+@media screen and (max-width: 992px) {
+
+    header{
+        height: 80px;
+        justify-content: center;
+    }
+
+    header .logoSimple {
+        height: 60px;
+        padding: 0 3rem 0 3rem;
+    }
+
+    header .nav {
+        /* display: none; */
+    }
+
+    header .containerNavigation{
+        justify-content: flex-end;
+        padding-right: 1em;
+    }
+
+    header .userSignOut{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-right: 1rem;
+        padding: .5rem ;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    header .userSignOut .userImg{
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    header .userSignOut .arrow{
+        width: 10px;
+        height: 10px;
+        margin-left: 0;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+
+    header .userSignOut p{
+        display: none;
+    }
+
+    header .menuBurger{
+        display: flex;
+    }
+
+    header .menuBurger img{
+        width: 40px;
+    }
+
+    .profile{
+        right: 60%;
+    }
+}
+
+@media screen and (max-width: 800px){
+
+    header .logoSimple{
+        padding: 0 1rem 0 1rem;
+    }
+}
+
+@media screen and (max-width: 696px) {
+
+    
+    header{
+        padding-top: 2rem;
+    }
+
+    header .logo {
+        height: 60px;
+        padding: 0;
+    }
+
 }
 
 
@@ -367,6 +456,102 @@ button:active{
 }
 
 
+@media screen and (max-width: 992px) {
+
+    .formCredentials.login .registerForm {
+        padding: 0;
+    }
+
+    .formCredentials .descriptionUniandes {
+        padding: 2em 1rem;
+    }
+
+    .formCredentials .descriptionUniandes p {
+        text-align: center;
+    }
+
+    fieldset{
+        width: 100%;
+    }
+
+    fieldset label{
+        width: 100%;
+    }
+
+    .registerForm{
+        width: 100%;
+        padding: 0 2em;
+    }
+}
+
+@media screen and (max-width: 765px) {
+
+    .formCredentials{
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 696px) {
+
+    .formCredentials{
+        max-width: 90%;
+    }
+
+    .formCredentials.login .registerForm {
+        width: 100%;
+        padding: 2em;
+    }
+
+    .formCredentials .descriptionUniandes{
+        gap: 1rem;
+    }
+
+    .formCredentials.login {
+        transform: translateX(-50%) translateY(-30%);
+    }
+
+    .formCredentials h2{
+        font-size: 2.5em;
+    }
+
+    .formCredentials h3{
+        width: 100%;
+        font-size: 1em;
+        padding: 0 2em;
+        margin: 1em 0 0 0;
+    }
+
+    fieldset {
+        width: 100%;
+    }
+
+    fieldset .labelLogin {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 636px) {
+
+    .formCredentials{
+        transform: translateX(-50%) translateY(-15%);
+    }
+
+    .registerForm{
+        padding: 1rem 4em;
+    }
+
+    fieldset {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 425px){
+
+    .registerForm{
+        padding: 1rem 2em;
+    }
+}
+
 
 
 /* ---- SELECT ---- */
@@ -452,6 +637,19 @@ button:active{
     border: 1px solid #df0000;
 }
 
+.select .inputOption{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.select .inputOption input{
+    width: 50%;
+    height: 60%;
+    padding: 0 .5rem;
+}
 
 
 
@@ -464,6 +662,7 @@ button:active{
     gap: 1.5em;
     padding: 3em 6em;
     background-image: url("../../public/fondo-web-andes.jpg");
+    background-size: cover;
 }
 
 .containerPerfil h2{
@@ -522,9 +721,6 @@ button:active{
 .formPerfil .buttonLoad{
     width: 80%;
     height: 40px;
-    border-radius: 8px;
-    background-color: #2E2B5D;
-    color: #fff;
 }
 
 .formPerfil .loadPhoto{
@@ -909,4 +1105,74 @@ fieldset .labelSlider.company{
 textarea:focus-visible{
     border: 1px solid #3573f8;
     outline: none;
+}
+
+
+
+
+/* ---- SURVEY ---- */
+
+.containerSurvey{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+    min-height: 80vh;
+    background-image: url("../../public/fondo-web-andes.jpg");
+    padding: 2.5rem 6rem;
+    padding-bottom: 0;
+}
+
+.containerSurvey h2{
+    color: #323A46;
+    font-size: 2em;
+    font-family: 'Work Sans';
+}
+
+.containerSurvey .surveysQuestions{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 10rem;
+    background: #FFFFFF;
+    border: 1px solid #E0E3E8;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.containerSurvey .surveysQuestions .question{
+    display: flex;
+    gap: 3rem;
+    background: #FAFAFC;
+    border: 1px solid #E0E3E8;
+    border-radius: 10px;
+    padding: 2rem 3rem;
+}
+
+.containerSurvey .surveysQuestions .question h3{
+    color: #323A46;
+    font-family: 'Nunito Sans';
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.containerSurvey .surveysQuestions .question p{
+    color: #323A46;
+    font-family: 'Nunito Sans';
+    font-weight: 400;
+    font-size: 1em;
+}
+
+.containerSurvey .surveysQuestions .question button{
+    width: 50%;
+}
+
+.containerSurvey .surveysQuestions .question img{
+    width: 280px;
+    height: 190px;
+}
+
+.containerSurvey .surveysQuestions .question .infoQuestion{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

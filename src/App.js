@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import userActions from "./store/users/actions.js";
 import "./styles/styles.css"
+import Survey from "./pages/Survey.jsx";
 
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="*" element={<AuthRoutes user={user} />}>
           <Route path={privateRoutes.PERFIL} element={<Perfil />} />
           <Route path={privateRoutes.SHEETS_LIFE} element={<HojaVida />} />
+          <Route path={privateRoutes.SURVEY} element={<Survey />} />
         </Route>
       </Routes>
     </>

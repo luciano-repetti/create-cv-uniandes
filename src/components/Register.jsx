@@ -11,6 +11,8 @@ export default function Register() {
   const [selects, setSelects] = useState({gender: "", identifier: "", upe: ""})
   const [formData, setFormData] = useState({})
   const [errors, setErrors] = useState({})
+  const [showPass, setShowPass] = useState({pass: false, passConfirm: false})
+
   const navigate = useNavigate()
 
   function handleChange(event) {
@@ -75,6 +77,7 @@ export default function Register() {
         dob: dateFormatted,
         gender: selects.gender.toLowerCase(),
       }
+      // console.log(userData);
       setFormData(userData)
     }
   }
@@ -96,6 +99,13 @@ export default function Register() {
       navigate('/perfil');
     }
   }, [user])
+
+  function handleShowPass(pass){
+    setShowPass(prevState => ({
+      ...prevState,
+      [pass]: !showPass[pass]
+    }))
+  }
 
   return (
 
@@ -196,22 +206,24 @@ export default function Register() {
             Contraseña
             <input
               tabIndex={0}
-              type="password"
-              placeholder="ingrese su contraseña"
+              type={showPass["pass"] ? "text" : "password"}
+              placeholder="Ingrese su contraseña"
               name=""
               id="password"
             />
+            <img onClick={() => handleShowPass("pass")} className="showpass" src={showPass["pass"] ? "./icono-ver-contraseña.png" : "./icono-no-ver-contraseña.png"} />
           </label>
 
           <label htmlFor="confirmPassword">
             Confirmar contraseña
             <input
               tabIndex={0}
-              type="password"
-              placeholder="ingrese nuevamente su contraseña"
+              type={showPass["passConfirm"] ? "text" : "password"}
+              placeholder="Repetir su contraseña"
               name=""
               id="passwordConfirmation"
             />
+            <img onClick={() => handleShowPass("passConfirm")} className="showpass" src={showPass["passConfirm"] ? "./icono-ver-contraseña.png" : "./icono-no-ver-contraseña.png"} />
           </label>
         </fieldset>
 

@@ -8,4 +8,5 @@ export const publicRoutes = {
 export const privateRoutes = {
     PERFIL: "perfil",
     SHEETS_LIFE: "hoja-de-vida",
+    SURVEY: "descubriendo-tu-opinion"
 }
