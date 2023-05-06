@@ -52,12 +52,14 @@ header .nav {
     width: max-content;
     display: flex;
     align-items: center;
+    gap: .5em;
 }
 
 header .nav a {
     color: #000;
     text-decoration: none;
     font-size: 1.1em;
+    border-radius: 1em;
     padding: .2rem 1.5rem;
 }
 
@@ -65,7 +67,10 @@ header .nav a.active {
     color: #000;
     text-decoration: none;
     background-color: #fff;
-    border-radius: 1em;
+}
+
+header .nav a:hover{
+    background-color: #fff;
 }
 
 header .userSignOut {
@@ -193,6 +198,10 @@ header .menuNavegation {
 
     .profile {
         right: 60%;
+    }
+
+    header .nav{
+        padding-right: 1em;
     }
 }
 
@@ -956,6 +965,7 @@ button:active {
 
     .containerPerfil{
         padding: 3em 1.5em;
+        background-image: url(../../public/fondo-móvil-andes.png);
     }
 
     .formPerfil{
@@ -1365,7 +1375,7 @@ textarea:focus-visible {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 2rem 10rem;
+    padding: 2rem 10%;
     background: #FFFFFF;
     border: 1px solid #E0E3E8;
     border-radius: 10px 10px 0px 0px;
@@ -1401,10 +1411,69 @@ textarea:focus-visible {
 .containerSurvey .surveysQuestions .question img {
     width: 280px;
     height: 190px;
+    object-fit: contain;
 }
 
 .containerSurvey .surveysQuestions .question .infoQuestion {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+
+@media screen and (max-width: 1100px){
+
+    .containerSurvey .surveysQuestions{
+        padding: 2em 4em;
+    }
+
+    .containerSurvey .surveysQuestions .question button{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 956px){
+
+    .containerSurvey .surveysQuestions .question{
+        gap: 1.5em;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .containerSurvey .surveysQuestions .question img{
+        width: 70%;
+        height: auto;
+    }
+
+    .containerSurvey .surveysQuestions .question .infoQuestion{
+        align-items: center;
+        gap: 1em;
+    }
+
+    .containerSurvey .surveysQuestions .question p{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 832px){
+
+    .containerSurvey{
+        padding: 2.5rem 2rem;
+    }
+}
+
+@media screen and (max-width: 532px){
+
+    .containerSurvey .surveysQuestions{
+        padding: 2em 2em;
+    }
+
+    .containerSurvey .surveysQuestions .question{
+        padding: 2em 1em;
+    }
+
+
+    .containerSurvey{
+        background-image: url("../../public/fondo-móvil-andes.png");
+    }
 }

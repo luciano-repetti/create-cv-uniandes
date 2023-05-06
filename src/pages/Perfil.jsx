@@ -54,7 +54,7 @@ export default function Perfil() {
           <article className="articlePefil">
             <h3>Datos básicos</h3>
             <form action="" className="formPerfil">
-              <fieldset>
+              <fieldset className="uploadPhoto">
                 <img className="photoLoad" src="./usuario_vacio.png" alt="" />
                 <div className="loadPhoto">
                   <p className="bold">Foto</p>
