@@ -51,7 +51,7 @@ export default function Header(){
                             <Link to={privateRoutes.SHEETS_LIFE} className={isCurrentPage("/hoja-de-vida")}>Hoja de vida</Link>
                             <Link to={privateRoutes.SURVEY} className={isCurrentPage("/descubriendo-tu-opinion")}>Descubriendo tu opinión</Link>
                         </nav>
-                        <div className="userSignOut" onClick={() => setMenu(!menu)}>
+                        <div className="userSignOut" onClick={() => setSignOut(!signOut)}>
                             <img className="userImg" src="./usuario_vacio.png" alt="" />
                             <div style={{display : "flex", alignItems: "center"}}>
                                 <p>{userData.fullName}</p>
@@ -70,12 +70,12 @@ export default function Header(){
                                 <p>{userData.fullName}</p>
                             </div>
                             <nav className="containerNavegation">
-                                <Link to={privateRoutes.PERFIL} className={isCurrentPage("/perfil")}>Perfil</Link>
-                                <Link to={privateRoutes.SHEETS_LIFE} className={isCurrentPage("/hoja-de-vida")}>Hoja de vida</Link>
-                                <Link to={privateRoutes.SURVEY} className={isCurrentPage("/descubriendo-tu-opinion")}>Descubriendo tu opinión</Link>
+                                <Link to={privateRoutes.PERFIL} onClick={changeMenu} className={isCurrentPage("/perfil")}>Perfil</Link>
+                                <Link to={privateRoutes.SHEETS_LIFE} onClick={changeMenu} className={isCurrentPage("/hoja-de-vida")}>Hoja de vida</Link>
+                                <Link to={privateRoutes.SURVEY} onClick={changeMenu} className={isCurrentPage("/descubriendo-tu-opinion")}>Descubriendo tu opinión</Link>
                             </nav>
                             <div className="signOut">
-                                <button className="buttonSignOut"><img src="./cerrar-sesion.png" />Cerrar sesión</button>
+                                <button onClick={changeSignOut} className="buttonSignOut"><img src="./cerrar-sesion.png" />Cerrar sesión</button>
                             </div>
                         </div>
                     </article>
