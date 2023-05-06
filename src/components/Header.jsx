@@ -8,6 +8,7 @@ import { privateRoutes } from "../routes/routes";
 export default function Header(){
 
     const [userData, setUserData] = useState({})
+    const [signOut, setSignOut] = useState(false)
     const [menu, setMenu] = useState(false)
 
     const {userSignOut} = userActions
@@ -18,7 +19,7 @@ export default function Header(){
     const user = useSelector(store => store.user)
 
     function changeSignOut(){
-        setMenu(!menu)
+        setSignOut(!signOut)
         dispatch(userSignOut())
         navigate("/login");
     }
@@ -32,6 +33,10 @@ export default function Header(){
 
     function isCurrentPage(path){
         return location.pathname === path ? 'active' : '';
+    }
+
+    function changeMenu(){
+        setMenu(!menu)
     }
 
     return(
@@ -54,9 +59,25 @@ export default function Header(){
                             </div>
                             <button onClick={changeSignOut} className={(menu ? "profile show" : "profile")}><img src="./cerrar-sesion.png" />Cerrar sesión</button>
                         </div>
-                        {/* <div className="menuBurger">
-                            <img src="./menu-icono.png" alt="" />
-                        </div> */}
+                        <div className="menuBurger">
+                            {menu ? <img onClick={changeMenu} src="./cerrar2-icono.png" alt="" />
+                            : <img onClick={changeMenu} src="./menu-icono.png" alt="" />
+                            }
+                        </div>
+                        <div className={menu ? "menuNavegation show" : "menuNavegation"}>
+                            <div className="user">
+                                <img className="userImg" src="./usuario_vacio.png" alt="" />
+                                <p>{userData.fullName}</p>
+                            </div>
+                            <nav className="containerNavegation">
+                                <Link to={privateRoutes.PERFIL} className={isCurrentPage("/perfil")}>Perfil</Link>
+                                <Link to={privateRoutes.SHEETS_LIFE} className={isCurrentPage("/hoja-de-vida")}>Hoja de vida</Link>
+                                <Link to={privateRoutes.SURVEY} className={isCurrentPage("/descubriendo-tu-opinion")}>Descubriendo tu opinión</Link>
+                            </nav>
+                            <div className="signOut">
+                                <button className="buttonSignOut"><img src="./cerrar-sesion.png" />Cerrar sesión</button>
+                            </div>
+                        </div>
                     </article>
                 </>
                 :  <img className="logo" src="./Logo-U-Andes.png" alt="" />

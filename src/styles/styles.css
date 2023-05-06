@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     min-height: 100vh;
     background-color: #e0dfe7;
 }
 
 /* ---- HEADER ---- */
 
-header{
+header {
     width: 100%;
     height: 100px;
     display: flex;
@@ -24,86 +24,90 @@ header{
     top: 0;
 }
 
-header.user{
+header.user {
     height: 100px;
     padding: 1rem 0;
     background-color: #FFEC00;
     position: static;
 }
 
-header .logo{
+header .logo {
     height: 60px;
     padding: 0 5rem;
 }
 
-header .containerNavigation{
+header .containerNavigation {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-header .logoSimple{
+header .logoSimple {
     height: 60px;
     padding: 0 5rem 0 6rem;
 }
 
-header .nav{
+header .nav {
     width: max-content;
     display: flex;
     align-items: center;
 }
 
-header .nav a{
+header .nav a {
     color: #000;
     text-decoration: none;
     font-size: 1.1em;
     padding: .2rem 1.5rem;
 }
 
-header .nav a.active{
+header .nav a.active {
     color: #000;
     text-decoration: none;
     background-color: #fff;
     border-radius: 1em;
 }
 
-header .userSignOut{
+header .userSignOut {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     margin-right: 1rem;
-    padding: .5rem ;
+    padding: .5rem;
     border-radius: 30px;
     position: relative;
     background-color: #fff;
     cursor: pointer;
 }
 
-header .userSignOut .userImg{
+header .userImg {
     width: 35px;
     height: 35px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-header .userSignOut .arrow{
+header .userSignOut .arrow {
     width: 10px;
     height: 10px;
     margin-left: 5px;
     cursor: pointer;
 }
 
-header .userSignOut p{
+header .userSignOut p {
     cursor: pointer;
 }
 
-header .menuBurger{
+header .menuBurger {
     display: none;
 }
 
-.profile{
+header .menuNavegation {
+    display: none;
+}
+
+.profile {
     background-color: #FFFFFF;
     color: #323A46;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
@@ -124,22 +128,22 @@ header .menuBurger{
     transition: min-height .3s;
 }
 
-.profile:hover{
+.profile:hover {
     background-color: #f5f5f5;
     color: #000;
 }
 
-.profile:active{
+.profile:active {
     background-color: #e7e7e7;
 }
 
-.profile.show{
+.profile.show {
     min-height: 45px;
 }
 
 @media screen and (max-width: 992px) {
 
-    header{
+    header {
         height: 80px;
         justify-content: center;
     }
@@ -149,33 +153,29 @@ header .menuBurger{
         padding: 0 3rem 0 3rem;
     }
 
-    header .nav {
-        /* display: none; */
-    }
-
-    header .containerNavigation{
+    header .containerNavigation {
         justify-content: flex-end;
         padding-right: 1em;
     }
 
-    header .userSignOut{
+    header .userSignOut {
         display: flex;
         flex-direction: column;
         gap: 0;
         margin-right: 1rem;
-        padding: .5rem ;
+        padding: .5rem;
         border-radius: 10px;
         position: relative;
     }
 
-    header .userSignOut .userImg{
+    header .userSignOut .userImg {
         width: 35px;
         height: 35px;
         object-fit: cover;
         border-radius: 50%;
     }
 
-    header .userSignOut .arrow{
+    header .userSignOut .arrow {
         width: 10px;
         height: 10px;
         margin-left: 0;
@@ -183,34 +183,30 @@ header .menuBurger{
         cursor: pointer;
     }
 
-    header .userSignOut p{
+    header .userSignOut p {
         display: none;
     }
 
-    header .menuBurger{
-        display: flex;
-    }
-
-    header .menuBurger img{
+    header .menuBurger img {
         width: 40px;
     }
 
-    .profile{
+    .profile {
         right: 60%;
     }
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
 
-    header .logoSimple{
+    header .logoSimple {
         padding: 0 1rem 0 1rem;
     }
 }
 
 @media screen and (max-width: 696px) {
 
-    
-    header{
+
+    header {
         padding-top: 2rem;
     }
 
@@ -219,6 +215,179 @@ header .menuBurger{
         padding: 0;
     }
 
+    header .logoSimple{
+        position: relative;
+        z-index: 10;
+    }
+
+    header .nav {
+        display: none;
+    }
+
+    header .userSignOut {
+        display: none;
+    }
+
+    header .menuBurger {
+        display: flex;
+    }
+
+    header .menuBurger {
+        display: flex;
+        cursor: pointer;
+        position: relative;
+        z-index: 10;
+    }
+
+    header .menuNavegation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 100px;
+        border-radius: 0 0 0 100%;
+        background-color: #ccbc00;
+        transition: all 0.5s;
+    }
+
+    header .menuNavegation a {
+        color: #323A46;
+        opacity: 0;
+        font-size: 1.5em;
+        text-decoration: none;
+        padding: .3em 1em;
+        border-radius: 20px;
+        transition: .5s background-color;
+    }
+
+    header .menuNavegation a:hover{
+        background-color: #fff;
+    }
+
+    header .menuNavegation a.active{
+        background-color: #fff;
+    }
+
+    header .menuNavegation.show {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        transition: all 0.5s;
+    }
+
+    header .menuNavegation.show a {
+        animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation-delay: .39s;
+    }
+
+    @-webkit-keyframes focus-in-contract-bck {
+        0% {
+          letter-spacing: 1em;
+          -webkit-transform: translateZ(300px);
+                  transform: translateZ(300px);
+          -webkit-filter: blur(12px);
+                  filter: blur(12px);
+          opacity: 0;
+        }
+        100% {
+          -webkit-transform: translateZ(12px);
+                  transform: translateZ(12px);
+          -webkit-filter: blur(0);
+                  filter: blur(0);
+          opacity: 1;
+        }
+    }
+    @keyframes focus-in-contract-bck {
+    0% {
+        letter-spacing: 1em;
+        -webkit-transform: translateZ(300px);
+                transform: translateZ(300px);
+        -webkit-filter: blur(12px);
+                filter: blur(12px);
+        opacity: 0;
+        }
+        100% {
+            -webkit-transform: translateZ(12px);
+                    transform: translateZ(12px);
+            -webkit-filter: blur(0);
+                    filter: blur(0);
+            opacity: 1;
+        }
+    }
+
+    header .signOut{
+        width: 80%;
+    }
+
+    header .menuNavegation .buttonSignOut{
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 3em;
+        border: none;
+        border-radius: 10px;
+        background: #323A46;
+        font-size: 17px;
+        color: #ffffff;
+        font-family: inherit;
+        font-weight: 500;
+    }
+
+    header .menuNavegation.show .buttonSignOut{
+        display: flex;
+        animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation-delay: .6s;
+    }
+
+    header .buttonSignOut img{
+        filter: brightness(10);
+    }
+
+    header .buttonSignOut:hover{
+        background-color: #272d36;
+    }
+
+    header .buttonSignOut:active{
+        background-color: #171b20;
+    }
+
+    header .menuNavegation .user{
+        display: none;
+        width: 80%;
+        align-items: center;
+        gap: 1em;
+        font-size: 1.3em;
+    }
+
+    header .menuNavegation.show .user{
+        display: flex;
+        animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation-delay: .2s;
+    }
+
+    header .menuNavegation .user img{
+        width: 60px;
+        height: 60px;
+    }
+
+    header .menuNavegation .containerNavegation{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: .5em;
+    }
+
+    header .menuNavegation.show .containerNavegation{
+        display: flex;
+    }
 }
 
 
@@ -226,7 +395,7 @@ header .menuBurger{
 
 /* ---- BACKGROUND ---- */
 
-.containerBackground{
+.containerBackground {
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -234,7 +403,7 @@ header .menuBurger{
     background-color: #e0dfe7;
 }
 
-.backgroundImage{
+.backgroundImage {
     display: inline-block;
     width: 100%;
     min-height: 60vh;
@@ -243,7 +412,7 @@ header .menuBurger{
     background-size: cover;
 }
 
-.backgroundGrey{
+.backgroundGrey {
     background-color: #e0dfe7;
     max-height: 200px;
 }
@@ -253,16 +422,16 @@ header .menuBurger{
 
 /* ---- FORM ---- */
 
-.bold{
+.bold {
     font-weight: 700;
     cursor: pointer;
 }
 
-.greyish{
+.greyish {
     color: #747373;
 }
 
-.formCredentials{
+.formCredentials {
     max-width: 70%;
     padding-top: 2em;
     border-top-right-radius: 1.7em;
@@ -278,22 +447,22 @@ header .menuBurger{
     transform: translateX(-50%) translateY(-25%);
 }
 
-.formCredentials.login{
+.formCredentials.login {
     transform: translateX(-50%) translateY(-35%);
 }
 
-.formCredentials.login .registerForm{
+.formCredentials.login .registerForm {
     padding: 0 18em;
 }
 
-.formCredentials h2{
+.formCredentials h2 {
     color: #1D1E1C;
     font-size: 3em;
     font-family: 'Work Sans', sans-serif;
     font-weight: 700;
 }
 
-.formCredentials h3{
+.formCredentials h3 {
     color: #323A46;
     text-align: center;
     width: 350px;
@@ -303,7 +472,7 @@ header .menuBurger{
     font-weight: 700;
 }
 
-.registerForm{
+.registerForm {
     display: flex;
     padding: 0 9em;
     align-items: center;
@@ -311,13 +480,13 @@ header .menuBurger{
     flex-direction: column;
 }
 
-fieldset{
+fieldset {
     border: none;
     display: flex;
     gap: 1.5em;
 }
 
-fieldset label{
+fieldset label {
     display: flex;
     flex-direction: column;
     gap: .5em;
@@ -329,17 +498,17 @@ fieldset label{
     position: relative;
 }
 
-fieldset .labelLogin{
+fieldset .labelLogin {
     width: 350px;
 }
 
-.labelCheckbox{
+.labelCheckbox {
     color: #323A46;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
 }
 
-input{
+input {
     color: #667085;
     width: 100%;
     height: 45px;
@@ -351,23 +520,23 @@ input{
     background-color: #FAFAFC;
 }
 
-.showpass{
+.showpass {
     width: 20px;
     position: absolute;
     top: 58%;
     right: 1em;
 }
 
-input:focus-visible{
+input:focus-visible {
     border: 1px solid #3573f8;
     outline: none;
 }
 
-.formCredentials input.error{
+.formCredentials input.error {
     border: 1px solid #ff0000;
 }
 
-.labelCheckbox{
+.labelCheckbox {
     display: flex;
     width: 100%;
     justify-content: flex-start;
@@ -376,11 +545,11 @@ input:focus-visible{
     user-select: none;
 }
 
-.formCredentials input[type="checkbox"]{
+.formCredentials input[type="checkbox"] {
     width: 1.2em;
 }
 
-button{
+button {
     width: 100%;
     height: 45px;
     border: none;
@@ -391,52 +560,53 @@ button{
     font-family: 'Work Sans', sans-serif;
 }
 
-button:hover{
+button:hover {
     background-color: #433E98;
 }
 
-button:active{
+button:active {
     background-color: #0F0E24;
 }
 
-.buttonMicrosoft{
+.buttonMicrosoft {
     background-color: #F2F2F6;
     color: #000;
     border: 1px solid #D6D9DC;
 }
 
-.buttonMicrosoft:hover{
+.buttonMicrosoft:hover {
     background: #FAFAFC;
     border: 1px solid #4589F9;
 }
 
-.formCredentials .registerForm a{
+.formCredentials .registerForm a {
     color: #000;
     text-decoration: none;
     cursor: pointer;
     text-align: center;
 }
 
-.formCredentials .forgetPassword{
+.formCredentials .forgetPassword {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
 
-.formCredentials .forgetPassword a{
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 400;
-    font-size: .9em;
-    color: #474747;
-}
-.formCredentials a{
+.formCredentials .forgetPassword a {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: .9em;
     color: #474747;
 }
 
-.formCredentials .descriptionUniandes{
+.formCredentials a {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: .9em;
+    color: #474747;
+}
+
+.formCredentials .descriptionUniandes {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -444,13 +614,13 @@ button:active{
     padding: 2em 0;
 }
 
-.formCredentials .descriptionUniandes p{
+.formCredentials .descriptionUniandes p {
     font-size: .75em;
     color: #1D1E1C;
     font-family: 'Work Sans', sans-serif;
 }
 
-.messageError{
+.messageError {
     color: #FF0000;
     font-size: .85em;
 }
@@ -470,15 +640,15 @@ button:active{
         text-align: center;
     }
 
-    fieldset{
+    fieldset {
         width: 100%;
     }
 
-    fieldset label{
+    fieldset label {
         width: 100%;
     }
 
-    .registerForm{
+    .registerForm {
         width: 100%;
         padding: 0 2em;
     }
@@ -486,14 +656,14 @@ button:active{
 
 @media screen and (max-width: 765px) {
 
-    .formCredentials{
+    .formCredentials {
         max-width: 80%;
     }
 }
 
 @media screen and (max-width: 696px) {
 
-    .formCredentials{
+    .formCredentials {
         max-width: 90%;
     }
 
@@ -502,7 +672,7 @@ button:active{
         padding: 2em;
     }
 
-    .formCredentials .descriptionUniandes{
+    .formCredentials .descriptionUniandes {
         gap: 1rem;
     }
 
@@ -510,11 +680,11 @@ button:active{
         transform: translateX(-50%) translateY(-30%);
     }
 
-    .formCredentials h2{
+    .formCredentials h2 {
         font-size: 2.5em;
     }
 
-    .formCredentials h3{
+    .formCredentials h3 {
         width: 100%;
         font-size: 1em;
         padding: 0 2em;
@@ -532,11 +702,11 @@ button:active{
 
 @media screen and (max-width: 636px) {
 
-    .formCredentials{
+    .formCredentials {
         transform: translateX(-50%) translateY(-15%);
     }
 
-    .registerForm{
+    .registerForm {
         padding: 1rem 4em;
     }
 
@@ -545,9 +715,9 @@ button:active{
     }
 }
 
-@media screen and (max-width: 425px){
+@media screen and (max-width: 425px) {
 
-    .registerForm{
+    .registerForm {
         padding: 1rem 2em;
     }
 }
@@ -556,12 +726,12 @@ button:active{
 
 /* ---- SELECT ---- */
 
-.select{
+.select {
     position: relative;
     width: 100%;
 }
 
-.select .inputSelect{
+.select .inputSelect {
     display: flex;
     align-items: center;
     width: 100%;
@@ -578,20 +748,20 @@ button:active{
     font-weight: 400;
 }
 
-.select .inputSelect p{
+.select .inputSelect p {
     color: #CBD1D8;
     font-family: 'Nunito Sans';
     font-weight: 400;
 }
 
-.select .inputSelect .arrow{
+.select .inputSelect .arrow {
     width: 15px;
     height: 15px;
     position: absolute;
     right: 1em;
 }
 
-.select .selectExpand{
+.select .selectExpand {
     width: 100%;
     list-style: none;
     position: absolute;
@@ -616,28 +786,28 @@ button:active{
     visibility: visible;
 }
 
-.select .selectExpand li{
+.select .selectExpand li {
     padding: 0.5em .5em;
 }
 
-.select .selectExpand li:hover{
+.select .selectExpand li:hover {
     background-color: #dddddd;
 }
 
-.select .inputSelect:focus-visible{
+.select .inputSelect:focus-visible {
     outline: none;
     border: 1px solid #3573f8;
 }
 
-.select .inputSelect.show{
+.select .inputSelect.show {
     border: 1px solid #3573f8;
 }
 
-.select .inputSelect.error{
+.select .inputSelect.error {
     border: 1px solid #df0000;
 }
 
-.select .inputOption{
+.select .inputOption {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -645,7 +815,7 @@ button:active{
     height: 100%;
 }
 
-.select .inputOption input{
+.select .inputOption input {
     width: 50%;
     height: 60%;
     padding: 0 .5rem;
@@ -655,7 +825,7 @@ button:active{
 
 /* ---- PERFIL ---- */
 
-.containerPerfil{
+.containerPerfil {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -665,33 +835,33 @@ button:active{
     background-size: cover;
 }
 
-.containerPerfil h2{
+.containerPerfil h2 {
     color: #323A46;
     font-size: 2em;
     font-family: 'Work Sans', sans-serif;
     font-weight: 700;
 }
 
-.containerPerfil .containerArticles{
+.containerPerfil .containerArticles {
     display: flex;
     width: 100%;
     gap: 3em;
 }
 
-.containerPerfil .containerArticles h3{
+.containerPerfil .containerArticles h3 {
     color: #323A46;
     font-size: 1.3em;
     font-family: 'Work Sans', sans-serif;
     font-weight: 700;
 }
 
-.containerPerfil .containerArticles .articlePefil{
+.containerPerfil .containerArticles .articlePefil {
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
-.containerPerfil .containerArticles .articlePefil .porcentajeCv{
+.containerPerfil .containerArticles .articlePefil .porcentajeCv {
     display: flex;
     flex-direction: column;
     gap: 1.5em;
@@ -702,7 +872,7 @@ button:active{
 }
 
 
-.formPerfil{
+.formPerfil {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -712,18 +882,18 @@ button:active{
     gap: 1.5em;
 }
 
-.formPerfil .photoLoad{
+.formPerfil .photoLoad {
     width: 95px;
     height: 95px;
     object-fit: cover;
 }
 
-.formPerfil .buttonLoad{
+.formPerfil .buttonLoad {
     width: 80%;
     height: 40px;
 }
 
-.formPerfil .loadPhoto{
+.formPerfil .loadPhoto {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -731,16 +901,16 @@ button:active{
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.formPerfil label{
+.formPerfil label {
     width: 270px;
 }
 
-.savePefil{
+.savePefil {
     background-color: #2E2B5D;
     color: #fff;
 }
 
-.downloadCv{
+.downloadCv {
     width: 200px;
     height: 40px;
     background-color: #2E2B5D;
@@ -748,11 +918,70 @@ button:active{
 }
 
 
+@media screen and (max-width: 1100px){
+
+    .containerPerfil .containerArticles{
+        flex-direction: column-reverse;
+    }
+
+    .containerPerfil .containerArticles .articlePefil .porcentajeCv{
+        width: max-content;
+    }
+
+    .formPerfil{
+        width: 100%;
+    }
+
+    fieldset{
+        justify-content: center;
+    }
+
+    .uploadPhoto{
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 880px){
+
+    .containerPerfil{
+        padding: 3em 3em;
+    }
+
+    .formPerfil label{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 646px){
+
+    .containerPerfil{
+        padding: 3em 1.5em;
+    }
+
+    .formPerfil{
+        padding: 2em 2em;
+    }
+
+    .formPerfil .photoLoad{
+        width: 70px;
+        height: 70px;
+    }
+
+    .formPerfil .buttonLoad{
+        width: 70%;
+        height: 30px;
+    }
+
+    .uploadPhoto{
+        flex-direction: row;
+    }
+}
+
 
 
 /* ---- LIFESHEET ---- */
 
-.containerHoja{
+.containerHoja {
     height: calc(100vh - 100px);
     padding: 0 6em;
     padding-top: 2em;
@@ -761,45 +990,45 @@ button:active{
     background-image: url("../../public/fondo-web-andes.jpg");
 }
 
-.containerCreate{
+.containerCreate {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.containerCreate h2{
+.containerCreate h2 {
     font-family: 'Work Sans';
     font-weight: 700;
     font-size: 2em;
     color: #323A46;
 }
 
-.createCv{
+.createCv {
     width: 165px;
     background-color: #46AF59;
 }
 
-.createCv:hover{
+.createCv:hover {
     background-color: #45D15E;
 }
 
-.createCv:active{
+.createCv:active {
     background-color: #348342;
 }
 
-.hojasDeVida{
+.hojasDeVida {
     padding-top: 1em;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.hojasDeVida h3{
+.hojasDeVida h3 {
     font-family: 'Work Sans';
     color: #323A46;
 }
 
-.cvs{
+.cvs {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -813,12 +1042,12 @@ button:active{
     border-radius: 10px 10px 0px 0px;
 }
 
-.cvs p{
+.cvs p {
     color: #323A46;
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.iconoCv{
+.iconoCv {
     width: 94px;
     height: 94px;
 }
@@ -828,7 +1057,7 @@ button:active{
 
 /* ---- CREATERESUME ---- */
 
-.createResume{
+.createResume {
     width: 100%;
     /* height: 86vh; */
     min-height: 86vh;
@@ -840,7 +1069,7 @@ button:active{
     background-image: url("../../public/fondo-web-andes.jpg");
 }
 
-.createResume .containerCreateCv{
+.createResume .containerCreateCv {
     width: 100%;
     min-height: 76vh;
     padding-top: 2em;
@@ -852,7 +1081,7 @@ button:active{
     border-radius: 10px 10px 0px 0px;
 }
 
-.createResume .containerH2{
+.createResume .containerH2 {
     display: flex;
     width: 100%;
     justify-content: flex-start;
@@ -860,18 +1089,18 @@ button:active{
     font-family: 'Work sans';
 }
 
-.createResume .containerH2 .arrowLeft{
+.createResume .containerH2 .arrowLeft {
     margin-right: .7em;
 }
 
-.createResume .subtitleCv{
+.createResume .subtitleCv {
     width: max-content;
     display: flex;
     justify-content: flex-start;
     cursor: pointer;
 }
 
-.createResume .containerRol{
+.createResume .containerRol {
     margin-top: 1em;
     display: flex;
     flex-direction: column;
@@ -879,16 +1108,16 @@ button:active{
     gap: 1em;
 }
 
-.createResume .containerRol h3{
+.createResume .containerRol h3 {
     font-family: 'Work Sans', sans-serif;
 }
 
-.createResume .containerRol .containerButton{
+.createResume .containerRol .containerButton {
     display: flex;
     gap: 1rem;
 }
 
-.createResume .containerRol .containerButton .buttonSimple{
+.createResume .containerRol .containerButton .buttonSimple {
     width: max-content;
     height: 46px;
     padding: 0 1.5em;
@@ -903,7 +1132,7 @@ button:active{
 
 /* ---- STEPS ---- */
 
-.steps{
+.steps {
     display: flex;
     align-items: center;
     position: relative;
@@ -912,14 +1141,14 @@ button:active{
     font-family: 'Work Sans', sans-serif;
 }
 
-.steps .containerCircle{
+.steps .containerCircle {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
 }
 
-.steps .containerCircle p{
+.steps .containerCircle p {
     padding-top: .5em;
     font-size: .9em;
     font-family: 'Nunito Sans', sans-serif;
@@ -929,7 +1158,7 @@ button:active{
     transform: translateY(100%);
 }
 
-.steps .containerCircle .circle{
+.steps .containerCircle .circle {
     display: flex;
     width: 64px;
     height: 64px;
@@ -942,7 +1171,7 @@ button:active{
 }
 
 
-.steps .containerCircle .stick{
+.steps .containerCircle .stick {
     display: flex;
     width: 100px;
     height: 7px;
@@ -953,7 +1182,8 @@ button:active{
     transform: translateY(-50%);
 }
 
-.steps .containerCircle.active .circle, .steps .containerCircle.active .stick{
+.steps .containerCircle.active .circle,
+.steps .containerCircle.active .stick {
     background-color: #2E2B5D;
     color: #fff;
 }
@@ -963,7 +1193,7 @@ button:active{
 
 /* ---- CAROUSEL ---- */
 
-.containerCarousel{
+.containerCarousel {
     padding-top: 3em;
     padding-bottom: 2em;
     width: 100%;
@@ -972,7 +1202,7 @@ button:active{
     align-items: center;
 }
 
-.containerCarousel .carousel{
+.containerCarousel .carousel {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -981,7 +1211,7 @@ button:active{
     overflow: hidden;
 }
 
-.containerCarousel .carousel .containerSliders{
+.containerCarousel .carousel .containerSliders {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -990,7 +1220,7 @@ button:active{
     height: 590px;
 }
 
-.containerCarousel .carousel .slider{
+.containerCarousel .carousel .slider {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -1000,7 +1230,7 @@ button:active{
     top: 50%;
 }
 
-.containerCarousel .carousel .slider .containerForm{
+.containerCarousel .carousel .slider .containerForm {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -1009,20 +1239,20 @@ button:active{
     color: #323A46;
 }
 
-.containerCarousel .carousel .slider .containerForm hr{
+.containerCarousel .carousel .slider .containerForm hr {
     width: 100%;
     height: 1px;
     background-color: #000;
     border: none;
 }
 
-.containerCarousel .carousel .slider .containerForm .photoLoad{
+.containerCarousel .carousel .slider .containerForm .photoLoad {
     width: 95px;
     height: 95px;
     object-fit: cover;
 }
 
-.containerCarousel .carousel .slider .containerForm .loadPhoto{
+.containerCarousel .carousel .slider .containerForm .loadPhoto {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1030,20 +1260,20 @@ button:active{
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.containerCarousel .carousel .slider .containerForm .loadPhoto .buttonLoad{
+.containerCarousel .carousel .slider .containerForm .loadPhoto .buttonLoad {
     height: 40px;
     width: 120px;
 }
 
-.containerCarousel .carousel .slider.default{
+.containerCarousel .carousel .slider.default {
     transform: translateY(-50%) translateX(0);
 }
 
-.containerCarousel .carousel .slider.active{
+.containerCarousel .carousel .slider.active {
     animation: slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-.containerCarousel .carousel .slider.dissable{
+.containerCarousel .carousel .slider.dissable {
     animation: slide-left-dissable 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
@@ -1051,39 +1281,41 @@ button:active{
 @keyframes slide-left {
     0% {
         -webkit-transform: translateY(-50%) translateX(150%);
-                transform: translateY(-50%) translateX(150%);
+        transform: translateY(-50%) translateX(150%);
     }
+
     100% {
         -webkit-transform: translateY(-50%) translateX(0%);
-                transform: translateY(-50%) translateX(0%);
+        transform: translateY(-50%) translateX(0%);
     }
 }
 
 @keyframes slide-left-dissable {
     0% {
         -webkit-transform: translateY(-50%) translateX(0%);
-                transform: translateY(-50%) translateX(0%);
+        transform: translateY(-50%) translateX(0%);
     }
+
     100% {
         -webkit-transform: translateY(-50%) translateX(-160%);
-                transform: translateY(-50%) translateX(-160%);
+        transform: translateY(-50%) translateX(-160%);
     }
 }
 
 
-fieldset .labelSlider{
+fieldset .labelSlider {
     width: 50%;
 }
 
-fieldset .labelSlider.company{
+fieldset .labelSlider.company {
     width: 70%;
 }
 
-.labelDescription{
+.labelDescription {
     width: 100%;
 }
 
-.labelDescription textarea{
+.labelDescription textarea {
     resize: none;
     width: 100%;
     height: 80px;
@@ -1096,13 +1328,13 @@ fieldset .labelSlider.company{
     background-color: #FAFAFC;
 }
 
-.labelDescription .resumeWork{
+.labelDescription .resumeWork {
     height: 80px;
     color: #667085;
     font-size: .9em;
 }
 
-textarea:focus-visible{
+textarea:focus-visible {
     border: 1px solid #3573f8;
     outline: none;
 }
@@ -1112,7 +1344,7 @@ textarea:focus-visible{
 
 /* ---- SURVEY ---- */
 
-.containerSurvey{
+.containerSurvey {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -1123,13 +1355,13 @@ textarea:focus-visible{
     padding-bottom: 0;
 }
 
-.containerSurvey h2{
+.containerSurvey h2 {
     color: #323A46;
     font-size: 2em;
     font-family: 'Work Sans';
 }
 
-.containerSurvey .surveysQuestions{
+.containerSurvey .surveysQuestions {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -1139,7 +1371,7 @@ textarea:focus-visible{
     border-radius: 10px 10px 0px 0px;
 }
 
-.containerSurvey .surveysQuestions .question{
+.containerSurvey .surveysQuestions .question {
     display: flex;
     gap: 3rem;
     background: #FAFAFC;
@@ -1148,30 +1380,30 @@ textarea:focus-visible{
     padding: 2rem 3rem;
 }
 
-.containerSurvey .surveysQuestions .question h3{
+.containerSurvey .surveysQuestions .question h3 {
     color: #323A46;
     font-family: 'Nunito Sans';
     font-weight: 700;
     font-size: 1.5em;
 }
 
-.containerSurvey .surveysQuestions .question p{
+.containerSurvey .surveysQuestions .question p {
     color: #323A46;
     font-family: 'Nunito Sans';
     font-weight: 400;
     font-size: 1em;
 }
 
-.containerSurvey .surveysQuestions .question button{
+.containerSurvey .surveysQuestions .question button {
     width: 50%;
 }
 
-.containerSurvey .surveysQuestions .question img{
+.containerSurvey .surveysQuestions .question img {
     width: 280px;
     height: 190px;
 }
 
-.containerSurvey .surveysQuestions .question .infoQuestion{
+.containerSurvey .surveysQuestions .question .infoQuestion {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
