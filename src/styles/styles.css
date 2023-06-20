@@ -12,6 +12,28 @@ body {
     background-color: #e0dfe7;
 }
 
+/* ---- ATOMS ---- */
+
+.addition{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: .5em;
+}
+
+.addition img{
+    width: 24px;
+    height: 24px;
+}
+
+.addition p{
+    font-family: "Nunito Sans";
+    font-size: 1em;
+    color: #46AF59;
+}
+
+
+
 /* ---- HEADER ---- */
 
 header {
@@ -1217,8 +1239,13 @@ button:active {
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 50%;
+    width: 55%;
     overflow: hidden;
+}
+
+.containerCarousel .carousel .buttonCaroucel{
+    margin-top: 1em;
+    width: 100%;
 }
 
 .containerCarousel .carousel .containerSliders {
@@ -1227,7 +1254,7 @@ button:active {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 590px;
+    height: 500px;
 }
 
 .containerCarousel .carousel .slider {
@@ -1243,8 +1270,11 @@ button:active {
 .containerCarousel .carousel .slider .containerForm {
     display: flex;
     flex-direction: column;
+    padding: 0 1em 1em 1em;
     width: 100%;
-    gap: 2rem;
+    height: 500px;
+    overflow-y: auto;
+    gap: 1.5em;
     font-family: 'Nunito Sans', sans-serif;
     color: #323A46;
 }
@@ -1312,9 +1342,17 @@ button:active {
     }
 }
 
-
 fieldset .labelSlider {
     width: 50%;
+    font-size: .85em;
+}
+
+input{
+    font-size: 1em;
+}
+
+fieldset .labelSlider.labelDate{
+    width: 35%;
 }
 
 fieldset .labelSlider.company {
@@ -1323,6 +1361,16 @@ fieldset .labelSlider.company {
 
 .labelDescription {
     width: 100%;
+}
+
+.labelSlider.checkCharge{
+    justify-content: flex-end;
+    align-items: center;
+    gap: .5em;
+}
+
+.labelSlider.checkCharge input[type="checkbox"]{
+    width: 1em;
 }
 
 .labelDescription textarea {

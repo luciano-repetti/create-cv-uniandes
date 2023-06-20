@@ -57,7 +57,7 @@ export default function Header(){
                                 <p>{userData.fullName}</p>
                                 <img className="arrow" src="./arrow-down.png" alt="" />
                             </div>
-                            <button onClick={changeSignOut} className={(menu ? "profile show" : "profile")}><img src="./cerrar-sesion.png" />Cerrar sesión</button>
+                            <button onClick={changeSignOut} className={(signOut ? "profile show" : "profile")}><img src="./cerrar-sesion.png" />Cerrar sesión</button>
                         </div>
                         <div className="menuBurger">
                             {menu ? <img onClick={changeMenu} src="./cerrar2-icono.png" alt="" />
