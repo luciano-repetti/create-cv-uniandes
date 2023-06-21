@@ -1,4 +1,4 @@
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Home from "./pages/Home.jsx";
 import Register from "./pages/Register.jsx";
@@ -9,32 +9,38 @@ import AuthRoutes from "./routes/AuthRoutes.jsx";
 import CarouselForm from "./components/CarouselForm.jsx";
 import { useEffect, useState } from "react";
 import userActions from "./store/users/actions.js";
-import "./styles/styles.css"
+import "./styles/styles.css";
 import Survey from "./pages/Survey.jsx";
+import Auth from "./axios/repositories/Auth.js";
 import useAuth from "./customHooks/useAuth.js";
 
-
 export default function App() {
+  const [loading, setLoading] = useState(true);
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(true)
-  const { user } = useAuth();
+  useEffect(() => {
+    async function fetchData() {
+      if (!user) {
+        if (localStorage.getItem("70k3n")) {
+          const token = localStorage.getItem("70k3n");
+          try {
+            const res = await Auth.verifyToken(token);
+            setUser(res.data);
+            navigate('/perfil')
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      }
+      setTimeout(() => {
+        setLoading(false);
+      }, 100);
+    }
+    fetchData();
+  }, []);
 
-    const {verifyToken} = userActions
-
-    useEffect(() => {
-        // if(localStorage.getItem("70k3n")){
-        //     const token = localStorage.getItem("70k3n")
-        //     dispatch(verifyToken(token))
-        // }
-        setTimeout(() => {
-          setLoading(false)
-        }, 100)
-    }, []);
-
-
-  console.log(user);
-
-  if(loading) return <p>cargando..</p>
+  if (loading) return <p>Loading..</p>;
 
   return (
     <>

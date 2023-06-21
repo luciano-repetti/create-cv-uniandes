@@ -1,35 +1,25 @@
 import React, {useEffect, useState} from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom"
 // import "../styles/header.css"
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import userActions from "../store/users/actions";
 import { privateRoutes } from "../routes/routes";
+import useAuth from "../customHooks/useAuth";
 
 export default function Header(){
 
-    const [userData, setUserData] = useState({})
+    const { user, setUser } = useAuth();
     const [signOut, setSignOut] = useState(false)
     const [menu, setMenu] = useState(false)
 
-    const {userSignOut} = userActions
-    const dispatch = useDispatch()
     const location = useLocation()
     const navigate = useNavigate()
 
-    const user = useSelector(store => store.user)
-
     function changeSignOut(){
         setSignOut(!signOut)
-        dispatch(userSignOut())
-        navigate("/login");
-    }
-
-    // useEffect(() =>{
-    //     if(user && (Object.keys(user.user).length >= 0)){
-    //       setUserData(user.user)
-    //     }
-    //   }, [user])
-      
+        setUser(null)
+        localStorage.removeItem("70k3n")
+    }      
 
     function isCurrentPage(path){
         return location.pathname === path ? 'active' : '';
@@ -40,9 +30,9 @@ export default function Header(){
     }
 
     return(
-        <header className={Object.keys(userData).length > 0 ? "header user" : "header"}>
+        <header className={user ? "header user" : "header"}>
             {
-                Object.keys(userData).length > 0 ?
+                user ?
                 <>
                     <img className="logoSimple" src="/Logo-U-Andes-Header.png" alt="" />
                     <article className="containerNavigation">
@@ -54,7 +44,7 @@ export default function Header(){
                         <div className="userSignOut" onClick={() => setSignOut(!signOut)}>
                             <img className="userImg" src="./usuario_vacio.png" alt="" />
                             <div style={{display : "flex", alignItems: "center"}}>
-                                <p>{userData.fullName}</p>
+                                <p>{user.fullName}</p>
                                 <img className="arrow" src="./arrow-down.png" alt="" />
                             </div>
                             <button onClick={changeSignOut} className={(signOut ? "profile show" : "profile")}><img src="./cerrar-sesion.png" />Cerrar sesión</button>
@@ -67,7 +57,7 @@ export default function Header(){
                         <div className={menu ? "menuNavegation show" : "menuNavegation"}>
                             <div className="user">
                                 <img className="userImg" src="./usuario_vacio.png" alt="" />
-                                <p>{userData.fullName}</p>
+                                <p>{user.fullName}</p>
                             </div>
                             <nav className="containerNavegation">
                                 <Link to={privateRoutes.PERFIL} onClick={changeMenu} className={isCurrentPage("/perfil")}>Perfil</Link>

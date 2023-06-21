@@ -11,13 +11,7 @@ import useAuth from "../customHooks/useAuth";
 export default function Login() {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({});
   const [showPass, setShowPass] = useState(false);
-
-  const dispatch = useDispatch();
-  const { userSignIn } = userActions;
-  const location = useLocation();
-  // const user = useSelector((store) => store.user);
   const { user, setUser} = useAuth();
 
 
@@ -36,17 +30,12 @@ export default function Login() {
         setUser(login)
         console.log(login);
         localStorage.setItem("70k3n", login.token)
-
-        // navigate("/perfil");
+        navigate("/perfil");
       }
     } catch (error) {
       authErrorLogin(error)
     }
   }
-
-  useEffect(() => {
-    console.log(user);
-  }, [user])
 
   function handleShowPass() {
     setShowPass(!showPass);

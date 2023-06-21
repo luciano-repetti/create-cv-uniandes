@@ -11,6 +11,11 @@ class Auth {
         const res = axios.post(config.SIGN_IN, userData).then((res) => res.data);
         return res;
     }
+
+    async verifyToken(token) {
+        const res = await axios.get(config.VALID_TOKEN, {headers: {Authorization: `bearer ${token}`}});
+        return res;
+    }
 }
 
 export default new Auth()

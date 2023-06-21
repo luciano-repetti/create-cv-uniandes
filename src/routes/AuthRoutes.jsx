@@ -4,8 +4,9 @@ import { publicRoutes } from "./routes"
 import { useEffect, useState } from "react"
 
 export default function AuthRoutes({user}){
+    console.log(user);
     return(
-        user && user.user.id ?
+        user && user.id ?
             <Outlet />
         :   <Navigate replace to={`${publicRoutes.LOGIN}`} />
     )
