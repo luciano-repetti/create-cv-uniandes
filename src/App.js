@@ -7,31 +7,31 @@ import HojaVida from "./pages/HojaVida.jsx";
 import { privateRoutes, publicRoutes } from "./routes/routes.js";
 import AuthRoutes from "./routes/AuthRoutes.jsx";
 import CarouselForm from "./components/CarouselForm.jsx";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import userActions from "./store/users/actions.js";
 import "./styles/styles.css"
 import Survey from "./pages/Survey.jsx";
+import useAuth from "./customHooks/useAuth.js";
 
 
 export default function App() {
 
-  const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
+  const { user } = useAuth();
 
     const {verifyToken} = userActions
 
     useEffect(() => {
-        if(localStorage.getItem("70k3n")){
-            const token = localStorage.getItem("70k3n")
-            dispatch(verifyToken(token))
-        }
+        // if(localStorage.getItem("70k3n")){
+        //     const token = localStorage.getItem("70k3n")
+        //     dispatch(verifyToken(token))
+        // }
         setTimeout(() => {
           setLoading(false)
         }, 100)
     }, []);
 
-  const user = useSelector((store) => store.user);
+
   console.log(user);
 
   if(loading) return <p>cargando..</p>

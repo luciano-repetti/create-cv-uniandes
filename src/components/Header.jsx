@@ -24,11 +24,11 @@ export default function Header(){
         navigate("/login");
     }
 
-    useEffect(() =>{
-        if(user && (Object.keys(user.user).length >= 0)){
-          setUserData(user.user)
-        }
-      }, [user])
+    // useEffect(() =>{
+    //     if(user && (Object.keys(user.user).length >= 0)){
+    //       setUserData(user.user)
+    //     }
+    //   }, [user])
       
 
     function isCurrentPage(path){

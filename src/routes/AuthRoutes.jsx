@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 
 export default function AuthRoutes({user}){
     return(
-        user.user.id ?
+        user && user.user.id ?
             <Outlet />
         :   <Navigate replace to={`${publicRoutes.LOGIN}`} />
     )

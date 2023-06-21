@@ -6,6 +6,7 @@ import userActions from "../store/users/actions";
 // AXIOS
 import Auth from "../axios/repositories/Auth";
 import { authErrorLogin } from "../axios/validations/responseApi";
+import useAuth from "../customHooks/useAuth";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -16,7 +17,9 @@ export default function Login() {
   const dispatch = useDispatch();
   const { userSignIn } = userActions;
   const location = useLocation();
-  const user = useSelector((store) => store.user);
+  // const user = useSelector((store) => store.user);
+  const { user, setUser} = useAuth();
+
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -30,15 +33,20 @@ export default function Login() {
       const login = await Auth.signUp(userData);
       console.log(login);
       if(login) {
+        setUser(login)
         console.log(login);
-        // localStorage.setItem("70k3n", login.token)
-        // dispatch(userSignIn(formData))
+        localStorage.setItem("70k3n", login.token)
+
         // navigate("/perfil");
       }
     } catch (error) {
       authErrorLogin(error)
     }
   }
+
+  useEffect(() => {
+    console.log(user);
+  }, [user])
 
   function handleShowPass() {
     setShowPass(!showPass);
