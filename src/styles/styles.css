@@ -551,11 +551,16 @@ input {
     background-color: #FAFAFC;
 }
 
+.containerInput{
+    position: relative;
+}
+
 .showpass {
     width: 20px;
     position: absolute;
-    top: 58%;
     right: 1em;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 input:focus-visible {
@@ -654,6 +659,8 @@ button:active {
 .messageError {
     color: #FF0000;
     font-size: .85em;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
 }
 
 

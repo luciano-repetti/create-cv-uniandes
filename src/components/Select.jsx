@@ -10,14 +10,13 @@ export default function Select(props) {
   };
 
   const handleSelectValue = (e) => {
-    console.log(e);
     const selectedValue = e.target.textContent;
     setSelectValue(selectedValue);
     setSelectExpand(!selectExpand);
     if (selectedValue === "Otro") {
       setInputValue("");
     } else {
-      props.onSelectChange(selectedValue, props._id);
+      props.onSelectChange(e.target.id, props._id);
     }
   };
 
@@ -63,10 +62,10 @@ export default function Select(props) {
         className={selectExpand ? "selectExpand show" : "selectExpand"}
       >
         {options
-          ? options.map((option, index) => {
+          ? options.map((option) => {
               return (
-                <li onClick={handleSelectValue} key={index}>
-                  {option}
+                <li onClick={handleSelectValue} id={option.id} key={option.id}>
+                  {option.name}
                 </li>
               );
             })
