@@ -34,14 +34,15 @@ function validateLogin(data) {
 }
 
 function validateRegister(id, value) {
+  let regexName = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
   switch (id) {
     case "name":
-      if (!validator.isAlpha(value, ["es-ES"])) {
+      if (!validator.matches(value, regexName)) {
         return "El nombre ingresado no es valido.";
       }
       break
     case "lastName":
-      if (!validator.isAlpha(value, ["es-ES"])) {
+      if (!validator.matches(value, regexName)) {
         return "El nombre ingresado no es valido.";
       }
       break

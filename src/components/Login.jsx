@@ -12,8 +12,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const [showPass, setShowPass] = useState(false);
-  const { user, setUser} = useAuth();
-
+  const { user, setUser } = useAuth();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -24,16 +23,16 @@ export default function Login() {
     };
 
     try {
-      const login = await Auth.signUp(userData);
+      const login = await Auth.signIn(userData);
       console.log(login);
-      if(login) {
-        setUser(login)
+      if (login) {
+        setUser(login);
         console.log(login);
-        localStorage.setItem("70k3n", login.token)
+        localStorage.setItem("70k3n", login.token);
         navigate("/perfil");
       }
     } catch (error) {
-      authErrorLogin(error)
+      authErrorLogin(error);
     }
   }
 
@@ -64,21 +63,23 @@ export default function Login() {
         <fieldset>
           <label className="labelLogin" htmlFor="password">
             Contraseña
-            <input
-              type={showPass ? "text" : "password"}
-              placeholder="Contraseña"
-              name=""
-              id="password"
-            ></input>
-            <img
-              onClick={() => handleShowPass()}
-              className="showpass"
-              src={
-                showPass
-                  ? "./icono-ver-contraseña.png"
-                  : "./icono-no-ver-contraseña.png"
-              }
-            />
+            <div className="containerInput">
+              <input
+                type={showPass ? "text" : "password"}
+                placeholder="Contraseña"
+                name=""
+                id="password"
+              ></input>
+              <img
+                onClick={() => handleShowPass()}
+                className="showpass"
+                src={
+                  showPass
+                    ? "./icono-ver-contraseña.png"
+                    : "./icono-no-ver-contraseña.png"
+                }
+              />
+            </div>
           </label>
         </fieldset>
         <div className="forgetPassword">

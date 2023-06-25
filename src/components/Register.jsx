@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link as LinkRouter, useNavigate } from "react-router-dom";
 import Select from "./Select";
 import Config from "../axios/repositories/Config";
+import Auth from "../axios/repositories/Auth";
 import { validateRegister } from "../axios/validations/auth";
+import useAuth from "../customHooks/useAuth";
+import { authErrorLogin } from "../axios/validations/responseApi";
+import { toast } from "react-toastify";
+import { SUCCESS_CONFIG } from "../config/notifications";
 
 export default function Register() {
   const [programs, setPrograms] = useState([]);
@@ -16,6 +21,7 @@ export default function Register() {
   const [showPass, setShowPass] = useState({ pass: false, passConfirm: false });
 
   const navigate = useNavigate();
+  const {setUser} = useAuth();
 
   useEffect(() => {
     const getPrograms = async () => {
@@ -81,6 +87,22 @@ export default function Register() {
     console.log(erroresForm);
     setErrors(erroresForm)
 
+    async function sendData(userData){
+      try {
+        const response = await Auth.signUp(userData);
+        console.log(response);
+        toast("Se creo la cuenta con éxito.", SUCCESS_CONFIG)
+        setTimeout(() =>{
+          localStorage.setItem("70k3n", response.token)
+          setUser(response)
+          navigate("/perfil")
+        }, 3000)
+      } catch (error) {
+        authErrorLogin(error)
+        console.log(error);
+      }
+    }
+
     if (allEmpty) {
       const userData = {
         email: event.target.querySelector("#email").value.toLowerCase().trim(),
@@ -98,7 +120,9 @@ export default function Register() {
       };
       console.log(userData);
       // setFormData(userData);
+      sendData(userData)
     }
+
   }
 
   function handleShowPass(pass) {
@@ -153,7 +177,7 @@ export default function Register() {
               indexZ={"25"}
               error={errors.type && errors.type}
               options={[
-                {name: "Cédula de identificación", id: "Cédula de identificación"},
+                {name: "Cédula de identificación", id: "dni"},
                 {name: "Pasaporte", id: "Pasaporte"},
                 {name: "Código uniandes", id: "Código uniandes"},
               ]}
