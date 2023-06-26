@@ -19,6 +19,7 @@ body {
     width: 100%;
     align-items: center;
     gap: .5em;
+    cursor: pointer;
 }
 
 .addition img{
@@ -1166,6 +1167,11 @@ button:active {
     border: 1px solid #E0E3E8;
 }
 
+.createResume .containerRol .containerButton .buttonSimple.active{
+    background-color: #2E2A5C;
+    color: #fff;
+}
+
 
 
 
@@ -1402,6 +1408,32 @@ fieldset .labelSlider.company {
 textarea:focus-visible {
     border: 1px solid #3573f8;
     outline: none;
+}
+
+.buttonIcon{
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: .5em .6em;
+    border-radius: 50%;
+}
+
+.buttonIcon:hover{
+    background-color: #0000002c;
+}
+
+.buttonIcon:active{
+    background-color: #0000004d;
+}
+
+.titleWorkExp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleWorkExp img{
+    width: 20px;
 }
 
 

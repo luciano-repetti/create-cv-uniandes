@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "./Select";
 import Addition from "./atoms/Addition";
+import NewWorkExp from "./NewWorkExperience";
 
 export function Slider1(props) {
   const slider = props.slider;
@@ -10,11 +11,7 @@ export function Slider1(props) {
       <div className="containerForm">
         <hr />
         <fieldset>
-          <img
-            className="photoLoad"
-            src="./usuario_vacio.png"
-            alt=""
-          />
+          <img className="photoLoad" src="./usuario_vacio.png" alt="" />
           <div className="loadPhoto">
             <p style={{ display: "flex" }}>
               <p className="bold">Foto</p>(opcional)
@@ -72,67 +69,73 @@ export function Slider1(props) {
         <fieldset>
           <label className="labelSlider">
             País
-            <Select indexZ={"25"} options={["Colombia", "Argentina", "Chile"]} _id={"pais"} />
+            <Select
+              indexZ={"25"}
+              options={["Colombia", "Argentina", "Chile"]}
+              _id={"pais"}
+            />
           </label>
 
           <label className="labelSlider">
             Ciudad
-            <Select indexZ={"25"} options={["Bogotá D.C", "Medellín", "Cartegena"]} _id={"ciudad"} />
+            <Select
+              indexZ={"25"}
+              options={["Bogotá D.C", "Medellín", "Cartegena"]}
+              _id={"ciudad"}
+            />
           </label>
         </fieldset>
-
       </div>
     </div>
   );
 }
 
-export function Slider2(props){
+export function Slider2(props) {
+  const slider = props.slider;
 
-    const slider = props.slider;
+  const handleDeleteWorkExp = (index) => {
+    setWorkExpForms((prevForms) => {
+      const updatedForms = [...prevForms];
+      updatedForms.splice(index, 1);
+      return updatedForms;
+    });
+  };
 
-    return(
-        <div className={`slider ${slider.slider2 ? "active" : "" || slider.slider3 ? "dissable" : ""}`}>
-            <div className="containerForm">
-                <h2>Perfil profesional</h2>
-                <fieldset>
-                    <label className="labelDescription">
-                        <textarea className="resumeWork" placeholder="Resumen ejecutivo corto donde se detalla la formación académica, la Universidad de grado, Idiomas, habilidades o conocimientos y competencias Ej: Análisis, liderazgo, tolerancia a la frustración, adaptabilidad y relacionamiento."></textarea>
-                    </label>
-                </fieldset>
-                <hr />
-                <h2>Experencia profesional</h2>
-                <div>
-                  <fieldset>
-                    <label className="labelSlider company">
-                        Empresa
-                        <input type="text" placeholder="Nombre de la empresa" />
-                    </label>
+  const [workExpForms, setWorkExpForms] = useState([
+    <NewWorkExp key={0} onDelete={handleDeleteWorkExp} />,
+  ]);
 
-                    <label className="labelSlider labelDate">
-                        Fecha de inicio
-                        <input type="text" placeholder="2018-01" />
-                    </label>
+  const addWorkExpForm = () => {
+    const newFormKey = workExpForms.length;
+    setWorkExpForms((prevForms) => [
+      ...prevForms,
+      <NewWorkExp key={newFormKey} onDelete={handleDeleteWorkExp} />,
+    ]);
+  };
 
-                    <label className="labelSlider labelDate">
-                        Fecha de finalización
-                        <input type="text" placeholder="2018-01" />
-                    </label>
-                  </fieldset>
-                    <fieldset className="labelSlider checkCharge">
-                      <input type="checkbox" name="" id="" />
-                        Actualmente tengo este cargo
-                    </fieldset>
-                </div>
-                <fieldset>
-                    <label className="labelDescription">
-                        Descripción
-                        <textarea placeholder="Descripción general de las funciones desempeñadas en la empresa. Una primer experiencia puede ser una práctica profesional, un trabajo temporal o un proyecto de gran relevancia."></textarea>
-                    </label>
-                </fieldset>
+  return (
+    <div
+      className={`slider ${
+        slider.slider2 ? "active" : "" || slider.slider3 ? "dissable" : ""
+      }`}
+    >
+      <div className="containerForm">
+        <h2>Perfil profesional</h2>
+        <fieldset>
+          <label className="labelDescription">
+            <textarea
+              className="resumeWork"
+              placeholder="Resumen ejecutivo corto donde se detalla la formación académica, la Universidad de grado, Idiomas, habilidades o conocimientos y competencias Ej: Análisis, liderazgo, tolerancia a la frustración, adaptabilidad y relacionamiento."
+            ></textarea>
+          </label>
+        </fieldset>
 
-                <Addition text={"Adicionar nueva experiencia profesional"} />
-
-            </div>    
-        </div>
-    )
+        {workExpForms}
+        <Addition
+          text={"Adicionar nueva experiencia profesional"}
+          onClick={addWorkExpForm}
+        />
+      </div>
+    </div>
+  );
 }

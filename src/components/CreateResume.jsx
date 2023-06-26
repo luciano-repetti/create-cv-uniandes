@@ -31,13 +31,13 @@ export default function CreateResume(props) {
                 <h3>Selecciona tu rol</h3>
                 <div className="containerButton">
                 <button
-                    className="buttonSimple"
+                    className={rol.egresado ? "buttonSimple active " : "buttonSimple"}
                     onClick={() => changeRol("egresado")}
                 >
                     Egresado
                 </button>
                 <button
-                    className="buttonSimple"
+                    className={rol.profesional ? "buttonSimple active " : "buttonSimple"}
                     onClick={() => changeRol("profesional")}
                 >
                     Profesional consolidado
