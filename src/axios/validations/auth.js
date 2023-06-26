@@ -43,7 +43,7 @@ function validateRegister(id, value) {
       break
     case "lastName":
       if (!validator.matches(value, regexName)) {
-        return "El nombre ingresado no es valido.";
+        return "El apellido ingresado no es valido.";
       }
       break
     case "select":

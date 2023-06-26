@@ -568,7 +568,7 @@ input:focus-visible {
     outline: none;
 }
 
-.formCredentials input.error {
+input.error {
     border: 1px solid #ff0000;
 }
 
