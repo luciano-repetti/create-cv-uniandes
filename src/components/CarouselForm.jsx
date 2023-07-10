@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {Slider1, Slider2} from "./Slider";
+import {Slider1, Slider2, Slider3, Slider4} from "./Slider";
 // import "../styles/caroucel.css"
 
 export default function CarouselForm() {
 
-  const [caroucel, setCarousel] = useState({slider1: false, slider2: false, slider3: false})
+  const [caroucel, setCarousel] = useState({slider1: false, slider2: false, slider3: false, slider4: false})
   const [contadorSlider, setContadorSlider] = useState(1)
 
   function changeCaroucel(caroucels){
@@ -29,9 +29,13 @@ export default function CarouselForm() {
 
           <Slider2 slider={caroucel} />
 
+          <Slider3 slider={caroucel} />
+
+          <Slider4 slider={caroucel} />
+
         </div>
         {
-          contadorSlider < 4 ?
+          contadorSlider < 5 ?
           <button className="buttonCaroucel" onClick={() => changeCaroucel(`slider${contadorSlider}`)}>Guardar y siguente</button>
           : <button className="buttonCaroucel">Guardar y siguente</button>
         }
