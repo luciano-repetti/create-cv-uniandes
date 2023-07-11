@@ -13,6 +13,7 @@ import "./styles/styles.css";
 import Survey from "./pages/Survey.jsx";
 import Auth from "./axios/repositories/Auth.js";
 import useAuth from "./customHooks/useAuth.js";
+import { AzureLogin } from "./pages/AzureADLogin.jsx";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -50,6 +51,7 @@ export default function App() {
         <Route path={publicRoutes.LOGIN} element={<Home />} />
         <Route path={publicRoutes.PRUEBAS} element={<CarouselForm />} />
         <Route path={publicRoutes.REGISTRO} element={<Register />} />
+        <Route path={publicRoutes.AZURELOGIN} element={<AzureLogin />} />
         <Route path="*" element={<AuthRoutes user={user} />}>
           <Route path={privateRoutes.PERFIL} element={<Perfil />} />
           <Route path={privateRoutes.SHEETS_LIFE} element={<HojaVida />} />

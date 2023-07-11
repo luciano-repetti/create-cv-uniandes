@@ -1,7 +1,8 @@
 export const publicRoutes = {
     LOGIN: "login",
     REGISTRO: "registro",
-    PRUEBAS: "pruebas"
+    PRUEBAS: "pruebas",
+    AZURELOGIN: "activeDirectoryLogin"
 }
 
 

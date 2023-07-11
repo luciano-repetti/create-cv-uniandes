@@ -7,6 +7,7 @@ import userActions from "../store/users/actions";
 import Auth from "../axios/repositories/Auth";
 import { authErrorLogin } from "../axios/validations/responseApi";
 import useAuth from "../customHooks/useAuth";
+import ButtonLoginAzure from "./LoginAzure";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -92,9 +93,8 @@ export default function Login() {
           ¿No tienes una cuenta? <label className="bold">Registrate</label>
         </LinkRouter>
 
-        <button className="buttonMicrosoft" type="">
-          Iniciar sesión con Microsoft Outlook
-        </button>
+        <ButtonLoginAzure />
+
       </form>
 
       <div className="descriptionUniandes">
