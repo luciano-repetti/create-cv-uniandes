@@ -4,47 +4,41 @@ import validator from "validator";
 
 
 function validatePerfil(id, value){
-    let regex = {name: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/}
+    let regex = {fullName: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/}
     switch (id) {
-        case "name":
+        case "fullName":
             if(value == undefined){
                 return "Debes ingresar un nombre."
-            }else if (!validator.matches(value, regex.name)) {
-                return "El nombre ingresado no es valido.";
-            }
-            break;
-        case "lastName":
-            if(value == undefined){
-                return "Debes ingresar un apellido."
-            }else if (!validator.matches(value, regex.name)) {
-                return "El apellido ingresado no es valido.";
+            }else if (!validator.matches(value, regex.fullName)) {
+                return "El nombre y apellido no es válido.";
             }
             break;
         case "dni":
             if(value == undefined){
                 return "Debes ingresar DNI."
-            }else if(!validator.isLength(value.toString(), { min: 8, max: 8 }) || !validator.isNumeric(value.toString())){
+            }else if(!validator.isNumeric(value.toString())){
                 return "El DNI ingresado no es valido.";
             }
             break;
         case "codeUniandes":
             if(value == undefined){
                 return "Debes ingresar un codigo Uniades."
-            }else if(value){
+            }else if(!validator.isNumeric(value.toString())){
                 return "El código Uniades no es valido.";
             }
             break;
         case "email":
+            console.log(value);
             if(value == undefined){
                 return "Debes ingresar un email."
-            }else if(validator.isEmail(value)){
+            }else if(!validator.isEmail(value)){
                 return "El email no es valido.";
             }
             break;
         case "phone":
             if(value == undefined){
                 return "Debes ingresar un telefono."
-            }else if(validator.isMobilePhone(value.toString(), ['es-AR', 'es-CO'])){
+            }else if(!validator.isNumeric(value.toString())){
                 return "El teléfono no es valido.";
             }
             break;
@@ -57,7 +51,7 @@ function validatePerfil(id, value){
             console.log(value);
             if (value == undefined) {
                 return "Debes ingresar una fecha.";
-            } else if (validator.isDate(value)) {
+            } else if (!validator.isDate(value)) {
                 return "La fecha ingresada no es valida.";
             }
             break;

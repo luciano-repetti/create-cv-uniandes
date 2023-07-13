@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Select(props) {
   const [selectExpand, setSelectExpand] = useState(false);
@@ -26,6 +26,11 @@ export default function Select(props) {
   };
 
   let options = props.options;
+  const { defaultValue } = props;
+
+  useEffect(() => {
+    setSelectValue(defaultValue || "");
+  }, [defaultValue]);
 
   return (
     <div className="select">

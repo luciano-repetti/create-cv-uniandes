@@ -2,6 +2,8 @@ import axios from "axios";
 import { validateLogin } from "../validations/auth";
 import { config } from "../endpoints/auth";
 
+const token = localStorage.getItem("70k3n")
+
 class Auth {
 
     async signIn(userData) {
@@ -20,6 +22,11 @@ class Auth {
     async signUp(userData) {
         const res = await axios.post(config.SIGN_UP, userData);
         return res.data;
+    }
+
+    async changeProfile(userData) {
+        const res = await axios.patch(config.CHANGE_PROFILE, userData, {headers: {Authorization: `bearer ${token}`}})
+        return res
     }
 }
 

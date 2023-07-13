@@ -9,4 +9,5 @@ export const config = {
     SIGN_UP: `${BASE_URL}/signup`,
     SIGN_IN: `${BASE_URL}/signin`,
     VALID_TOKEN: `${BASE_URL}/checkAuthStatus`,
+    CHANGE_PROFILE: `${BASE_URL}`
 };

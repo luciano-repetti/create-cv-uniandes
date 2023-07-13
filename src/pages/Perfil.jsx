@@ -4,22 +4,42 @@ import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../components/ScrollToTop";
 import Select from "../components/Select";
 import { useSelector } from "react-redux";
-import { validatePerfil } from "../axios/validations/perfil"; 
+import { validatePerfil } from "../axios/validations/perfil";
+import useAuth from "../customHooks/useAuth";
+import Auth from "../axios/repositories/Auth";
 
 export default function Perfil() {
   // ScrollToTop();
   const navigate = useNavigate();
+  const { user } = useAuth();
 
-  const formData = useRef({});
+  function convertData(value) {
+    if (value === "S - SOLTERO") {
+      return "Soltero";
+    }
+  }
+
+  const formData = useRef({
+    fullName: user?.uniandesProfile?.NombreCompleto || user?.fullName,
+    dni: user?.uniandesProfile?.Cedula || user?.dni,
+    codeUniandes: user?.uniandes_code,
+    emailEducational:
+      user?.uniandesProfile?.EmailUniandes || user?.profile?.secondary_email,
+    emailPersonal: user?.email,
+    phone: user?.profile?.phone,
+  });
   const valueSelectRef = useRef({
-    civilStatus: "",
-    nationality: "",
-    country: "",
-    cityResidence: "",
-    gender: "",
+    civilStatus:
+      user?.uniandesProfile?.EstadoCivil || user?.profile?.civil_status,
+    nationality:
+      user?.uniandesProfile?.Nacionalidad || user?.profile?.nationality,
+    country: user?.uniandesProfile?.Nacionalidad || user?.profile?.nationality,
+    cityResidence:
+      user?.uniandesProfile?.CiudadResidencia || user?.profile?.city,
+    gender: user?.uniandesProfile?.Sexo || user?.gender,
   });
 
-  const [birthdate, setBirthdate] = useState("");
+  const [birthdate, setBirthdate] = useState(user?.dob || "");
   const [errors, setErrors] = useState({});
 
   function handleChange(event) {
@@ -50,19 +70,24 @@ export default function Perfil() {
     formData.current[id] = value;
   };
 
-  const verfificationData = (data) => {
+  const verificationData = (data) => {
     const {
-      cityResidence, civilStatus,
-      codeUniandes, country,
-      dni, emailEducational,
-      emailPersonal, gender,
-      lastName, name,
-      nationality, phone, dob
+      cityResidence,
+      civilStatus,
+      codeUniandes,
+      country,
+      dni,
+      emailEducational,
+      emailPersonal,
+      gender,
+      fullName,
+      nationality,
+      phone,
+      dob,
     } = data;
 
     let error = {
-      name: validatePerfil("name", name),
-      lastName: validatePerfil("lastName", lastName),
+      fullName: validatePerfil("fullName", fullName),
       dni: validatePerfil("dni", dni),
       codeUniandes: validatePerfil("codeUniandes", codeUniandes),
       emailEducational: validatePerfil("email", emailEducational),
@@ -73,27 +98,45 @@ export default function Perfil() {
       country: validatePerfil("select", country),
       cityResidence: validatePerfil("select", cityResidence),
       dob: validatePerfil("date", dob),
-      gender: validatePerfil("select", gender)
-    }
+      gender: validatePerfil("select", gender),
+    };
 
     const allEmpty = Object.values(error).every((error) => error === undefined);
 
-    setErrors(error)
+    setErrors(error);
+    console.log(allEmpty);
 
-    console.log(error);
-
+    return allEmpty;
   };
 
   function handleSubmit(event) {
     event.preventDefault();
-    let dateFormatted = undefined
-    if(birthdate){
+    let dateFormatted = undefined;
+    if (birthdate) {
       let formatDate = birthdate.trim().split("/");
       dateFormatted = formatDate[2] + "-" + formatDate[1] + "-" + formatDate[0];
     }
 
-    let formatData = { ...formData.current, ...valueSelectRef.current, dob: dateFormatted };
-    verfificationData(formatData)
+    console.log(formData.current);
+
+    let formatData = {
+      ...formData.current,
+      ...valueSelectRef.current,
+      dob: dateFormatted,
+    };
+    let verifData = verificationData(formatData);
+
+    if (verifData) {
+      const perfilInstance = Auth;
+      perfilInstance
+        .changeProfile(formatData)
+        .then((response) => {
+          console.log('response', response);
+        })
+        .catch((error) => {
+          console.log('error', error);
+        });
+    }
   }
 
   return (
@@ -113,32 +156,23 @@ export default function Perfil() {
                 </div>
               </fieldset>
               <fieldset>
-                <label>
-                  Nombres
+                <label className="labelFullname">
+                  Nombre y apellido completos
                   <input
                     tabIndex={0}
                     onChange={handleInputChange}
-                    className={errors.name && "error"}
+                    defaultValue={
+                      user?.uniandesProfile?.NombreCompleto || user?.fullName
+                    }
+                    className={errors.fullName && "error"}
                     type="text"
-                    placeholder="Tus nombres"
+                    placeholder="Tu nombre y apellido"
                     name=""
-                    id="name"
+                    id="fullName"
                   />
-                  {errors.name && <p className="messageError">{errors.name}</p>}
-                </label>
-
-                <label>
-                  Apelidos
-                  <input
-                    tabIndex={0}
-                    onChange={handleInputChange}
-                    className={errors.lastName && "error"}
-                    type="text"
-                    placeholder="Tus apellidos"
-                    name=""
-                    id="lastName"
-                  />
-                  {errors.lastName && <p className="messageError">{errors.lastName}</p>}
+                  {errors.fullName && (
+                    <p className="messageError">{errors.fullName}</p>
+                  )}
                 </label>
               </fieldset>
 
@@ -148,6 +182,7 @@ export default function Perfil() {
                   <input
                     tabIndex={0}
                     onChange={handleInputChange}
+                    defaultValue={user?.uniandesProfile?.Cedula || user?.dni}
                     className={errors.dni && "error"}
                     type="text"
                     placeholder="123456789"
@@ -162,13 +197,16 @@ export default function Perfil() {
                   <input
                     tabIndex={0}
                     onChange={handleInputChange}
+                    defaultValue={user?.uniandes_code}
                     className={errors.codeUniandes && "error"}
                     type="text"
                     placeholder="c123456789"
                     name=""
                     id="codeUniandes"
                   />
-                  {errors.codeUniandes && <p className="messageError">{errors.codeUniandes}</p>}
+                  {errors.codeUniandes && (
+                    <p className="messageError">{errors.codeUniandes}</p>
+                  )}
                 </label>
               </fieldset>
 
@@ -178,13 +216,19 @@ export default function Perfil() {
                   <input
                     tabIndex={0}
                     onChange={handleInputChange}
+                    defaultValue={
+                      user?.uniandesProfile?.EmailUniandes ||
+                      user?.profile?.secondary_email
+                    }
                     className={errors.emailEducational && "error"}
                     type="email"
                     placeholder="example@uniandes.com"
                     name=""
                     id="emailEducational"
                   />
-                  {errors.emailEducational && <p className="messageError">{errors.emailEducational}</p>}
+                  {errors.emailEducational && (
+                    <p className="messageError">{errors.emailEducational}</p>
+                  )}
                 </label>
 
                 <label>
@@ -192,13 +236,16 @@ export default function Perfil() {
                   <input
                     tabIndex={0}
                     onChange={handleInputChange}
+                    defaultValue={user?.email}
                     className={errors.emailPersonal && "error"}
                     type="email"
                     placeholder="Tu correo personal"
                     name=""
                     id="emailPersonal"
                   />
-                  {errors.emailPersonal && <p className="messageError">{errors.emailPersonal}</p>}
+                  {errors.emailPersonal && (
+                    <p className="messageError">{errors.emailPersonal}</p>
+                  )}
                 </label>
               </fieldset>
 
@@ -208,13 +255,16 @@ export default function Perfil() {
                   <input
                     tabIndex={0}
                     onChange={handleInputChange}
+                    defaultValue={user?.profile?.phone}
                     className={errors.phone && "error"}
                     type="number"
                     placeholder="+57 310 458 6898"
                     name=""
                     id="phone"
                   />
-                  {errors.phone && <p className="messageError">{errors.phone}</p>}
+                  {errors.phone && (
+                    <p className="messageError">{errors.phone}</p>
+                  )}
                 </label>
 
                 <label>
@@ -228,9 +278,15 @@ export default function Perfil() {
                       { name: "Unión libre", id: "unionLibre" },
                     ]}
                     onSelectChange={handleSelectChange}
+                    defaultValue={convertData(
+                      user?.uniandesProfile?.EstadoCivil ||
+                        user?.profile?.civil_status
+                    )}
                     _id={"civilStatus"}
                   />
-                  {errors.civilStatus && <p className="messageError">{errors.civilStatus}</p>}
+                  {errors.civilStatus && (
+                    <p className="messageError">{errors.civilStatus}</p>
+                  )}
                 </label>
               </fieldset>
 
@@ -246,9 +302,15 @@ export default function Perfil() {
                       { name: "Chileno", id: "chileno" },
                     ]}
                     onSelectChange={handleSelectChange}
+                    defaultValue={
+                      user?.uniandesProfile?.Nacionalidad ||
+                      user?.profile?.nationality
+                    }
                     _id={"nationality"}
                   />
-                  {errors.nationality && <p className="messageError">{errors.nationality}</p>}
+                  {errors.nationality && (
+                    <p className="messageError">{errors.nationality}</p>
+                  )}
                 </label>
 
                 <label>
@@ -262,9 +324,15 @@ export default function Perfil() {
                       { name: "Chile", id: "chile" },
                     ]}
                     onSelectChange={handleSelectChange}
+                    defaultValue={
+                      user?.uniandesProfile?.Nacionalidad ||
+                      user?.profile?.nationality
+                    }
                     _id={"country"}
                   />
-                  {errors.country && <p className="messageError">{errors.country}</p>}
+                  {errors.country && (
+                    <p className="messageError">{errors.country}</p>
+                  )}
                 </label>
               </fieldset>
 
@@ -280,9 +348,15 @@ export default function Perfil() {
                       { name: "Cartegena", id: "cartegena" },
                     ]}
                     onSelectChange={handleSelectChange}
+                    defaultValue={
+                      user?.uniandesProfile?.CiudadResidencia ||
+                      user?.profile?.city
+                    }
                     _id={"cityResidence"}
                   />
-                  {errors.cityResidence && <p className="messageError">{errors.cityResidence}</p>}
+                  {errors.cityResidence && (
+                    <p className="messageError">{errors.cityResidence}</p>
+                  )}
                 </label>
 
                 <label>
@@ -290,11 +364,11 @@ export default function Perfil() {
                   <input
                     tabIndex={0}
                     type="text"
+                    onChange={handleChange}
                     className={errors.dob && "error"}
                     placeholder="DD/MM/AAAA"
                     name="fechaNacimiento"
                     value={birthdate}
-                    onChange={handleChange}
                     id="dob"
                   />
                   {errors.dob && <p className="messageError">{errors.dob}</p>}
@@ -313,9 +387,12 @@ export default function Perfil() {
                       { name: "Otro", id: "Otro" },
                     ]}
                     onSelectChange={handleSelectChange}
+                    defaultValue={user?.uniandesProfile?.Sexo || user?.gender}
                     _id={"gender"}
                   />
-                  {errors.gender && <p className="messageError">{errors.gender}</p>}
+                  {errors.gender && (
+                    <p className="messageError">{errors.gender}</p>
+                  )}
                 </label>
               </fieldset>
               <button type="submit" className="savePefil">
@@ -327,7 +404,7 @@ export default function Perfil() {
           <article className="articlePefil">
             <h3>Porcentaje de información completada</h3>
             <article className="porcentajeCv">
-              <h4 className="greyish">0% de perfil completado</h4>
+              <h4 className="greyish">{user?.percentage}% de perfil completado</h4>
               <button
                 className="downloadCv"
                 onClick={() => navigate("/hoja-de-vida")}
